@@ -318,7 +318,7 @@ main {
 }
 
 .plan-card ul li::before {
-  content: "âœ“";
+  content: "\2713";
   color: var(--orange);
   font-weight: 700;
   margin-right: 0.5rem;
