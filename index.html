@@ -1,22 +1,19 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FLASH - Provedora de Internet</title>
-    <meta
-      name="description"
-      content="FLASH - internet rápida e estável com planos e chip 5G em opções selecionadas."
-    />
+    <meta name="description" content="FLASH - internet rápida e estável com planos e chip 5G em opções selecionadas." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+
+    <!-- HEADER -->
     <header class="site-header" id="topo">
       <div class="container header-inner">
         <a class="logo" href="#home" aria-label="Ir para o início">
@@ -29,200 +26,185 @@
           <a href="#contato">Contato</a>
         </nav>
         <a class="btn btn-primary btn-header" href="#planos">Assinar agora</a>
-        <button
-          class="menu-toggle"
-          aria-label="Abrir menu"
-          aria-expanded="false"
-          aria-controls="menu-principal"
-          type="button"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal" type="button">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </header>
 
     <main>
+
+      <!-- HERO -->
       <section class="hero" id="home">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <span class="pill">Internet + Chip 5G Flash Móvel</span>
-            <h1>FLASH a conexão perfeita</h1>
-            <p>
-              Internet rápida e estável + chip 5G incluso em planos selecionados.
-              Atendimento ágil, instalação prática e controle total no app.
-            </p>
+        <div class="hero-orbs">
+          <div class="orb orb-1"></div>
+          <div class="orb orb-2"></div>
+          <div class="orb orb-3"></div>
+        </div>
+
+        <!-- BLOCO DE TEXTO — centralizado -->
+        <div class="container">
+          <div class="hero-content" data-animate>
+            <span class="pill">
+              <span class="pill-dot"></span>
+              Internet + Chip Móvel Flash 
+            </span>
+            <h1>FLASH <span class="gradient-text">a conexão perfeita</span></h1>
+            <p>Internet rápida e estável + chip 5G incluso em planos selecionados.<br />Atendimento ágil, instalação prática e controle total no app.</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#planos">
-                Ver planos a partir de R$ 59,90
-              </a>
-              <a class="btn btn-secondary" href="#contato">Falar com atendente</a>
+              <a class="btn btn-primary btn-glow" href="#planos">Ver planos a partir de R$ 59,90</a>
+              <a class="btn btn-ghost" href="#contato">Falar com atendente</a>
             </div>
+
+            <!-- highlights em linha -->
             <div class="hero-highlights">
-              <div class="highlight">
-                <span aria-hidden="true">&#9889;</span>
-                <div>
+              <div class="highlight glass" data-animate-delay="100">
+                <span class="highlight-icon">⚡</span>
+                <div class="highlight-body">
                   <strong>Wi-Fi rápido e estável</strong>
                   <p>Velocidade para trabalho e streaming.</p>
                 </div>
               </div>
-              <div class="highlight">
-                <span aria-hidden="true">&#128241;</span>
-                <div>
-                  <strong>Chip 5G Flash Móvel</strong>
+              <div class="highlight glass" data-animate-delay="200">
+                <span class="highlight-icon">📱</span>
+                <div class="highlight-body">
+                  <strong>Chip Flash Móvel</strong>
                   <p>Conexão fora de casa quando precisar.</p>
                 </div>
               </div>
-              <div class="highlight">
-                <span aria-hidden="true">&#128736;</span>
-                <div>
+              <div class="highlight glass" data-animate-delay="300">
+                <span class="highlight-icon">🔧</span>
+                <div class="highlight-body">
                   <strong>Suporte e instalação</strong>
                   <p>Equipe local pronta para ajudar.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="hero-media">
-            <img src="assets/banner-hero.jpg" alt="Banner principal da FLASH" loading="lazy" />
+        </div>
+
+        <!-- BANNER PROPAGANDA — largura total abaixo do texto -->
+        <div class="hero-banner-wrap" data-animate>
+          <div class="container">
+            <div class="hero-img-wrapper">
+              <img src="assets/banner-hero.jpg" alt="Banner principal da FLASH" loading="lazy" />
+            </div>
           </div>
         </div>
+
       </section>
 
+      <!-- PLANOS -->
       <section class="section plans" id="planos">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header" data-animate>
             <span class="section-kicker">Planos Flash</span>
-            <h2>Planos a partir de R$ 59,90</h2>
-            <p>Escolha a combinação ideal de internet + chip 5G.</p>
+            <h2>Planos a partir de <span class="gradient-text">R$ 59,90</span></h2>
+            <p>Escolha a combinação ideal de internet + chip Móvel.</p>
           </div>
           <div class="plans-grid">
-            <article class="plan-card">
+            <article class="plan-card glass" data-animate data-animate-delay="100">
               <div class="plan-head">
                 <h3>FLASH 500 Mega</h3>
                 <p class="price">R$ 79,90<span>/mês</span></p>
               </div>
               <ul>
                 <li>500 Mega de internet</li>
-                <li>Chip 5G Flash Móvel incluso</li>
+                <li>Chip Flash Móvel incluso</li>
                 <li>Suporte e instalação ágeis</li>
               </ul>
-              <button class="btn btn-primary whatsapp-plan" type="button" data-plan="79,90">
-                Assinar no WhatsApp
-              </button>
+              <button class="btn btn-outline whatsapp-plan" type="button" data-plan="79,90">Assinar no WhatsApp</button>
             </article>
-            <article class="plan-card featured">
-              <div class="badge">Mais escolhido</div>
+
+            <article class="plan-card glass featured" data-animate data-animate-delay="200">
+              <div class="badge">⭐ Mais escolhido</div>
               <div class="plan-head">
-                <h3>FLASH 500 Mega + 25GB</h3>
+                <h3>FLASH 500 Mega + Chip Com 25GIGAS </h3>
                 <p class="price">R$ 99,90<span>/mês</span></p>
               </div>
               <ul>
                 <li>500 Mega de internet</li>
-                <li>25GB no Chip 5G Flash Móvel</li>
+                <li>25GB no Chip Flash Móvel</li>
                 <li>Conteúdo de canais e filmes</li>
               </ul>
-              <button class="btn btn-primary whatsapp-plan" type="button" data-plan="99,90">
-                Assinar no WhatsApp
-              </button>
+              <button class="btn btn-primary btn-glow whatsapp-plan" type="button" data-plan="99,90">Assinar no WhatsApp</button>
             </article>
-            <article class="plan-card">
+
+            <article class="plan-card glass" data-animate data-animate-delay="300">
               <div class="plan-head">
-                <h3>FLASH 500 Mega + Box TV</h3>
+                <h3>FLASH 500 Mega + Box TV + <br> 3 chips com 50 GIGAS</h3>
                 <p class="price">R$ 149,90<span>/mês</span></p>
               </div>
               <ul>
                 <li>500 Mega de internet</li>
-                <li>3 Chips 5G Flash Móvel</li>
+                <li>3 Chips Flash Móvel</li>
                 <li>Box TV incluso</li>
               </ul>
-              <button class="btn btn-primary whatsapp-plan" type="button" data-plan="149,90">
-                Assinar no WhatsApp
-              </button>
+              <button class="btn btn-outline whatsapp-plan" type="button" data-plan="149,90">Assinar no WhatsApp</button>
             </article>
           </div>
-          <div class="notice">
-            <strong>Chip 5G Flash Móvel:</strong> ligações ilimitadas + WhatsApp,
-            gratuito por 10 anos.
+          <div class="notice" data-animate>
+            <span class="notice-icon">📡</span>
+            <p><strong>Chip Flash Móvel:</strong> ligações ilimitadas + WhatsApp ilimitado, gratuito por 10 anos.</p>
           </div>
         </div>
       </section>
 
+      <!-- APP -->
       <section class="section app" id="app">
         <div class="container app-grid">
-          <div class="app-text">
+          <div class="app-text" data-animate>
             <span class="section-kicker">Baixar App</span>
-            <h2>Controle total na palma da mão</h2>
-            <p>
-              Baixe o app FLASH para acompanhar sua internet, boletos e suporte.
-            </p>
+            <h2>Controle total na <span class="gradient-text">palma da mão</span></h2>
+            <p>Baixe o app FLASH para acompanhar sua internet, boletos e suporte.</p>
             <div class="app-buttons">
-              <a
-                class="store-badge"
-                href="https://play.google.com/store/apps/details?id=SEU_APP"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Baixar na Google Play"
-              >
+              <a class="store-badge" href="https://play.google.com/store/apps/details?id=SEU_APP" target="_blank" rel="noopener noreferrer" aria-label="Baixar na Google Play">
                 <img src="assets/google-play.png" alt="Google Play" loading="lazy" />
               </a>
-              <a
-                class="store-badge"
-                href="https://apps.apple.com/app/idSEU_APP"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Baixar na App Store"
-              >
+              <a class="store-badge" href="https://apps.apple.com/app/idSEU_APP" target="_blank" rel="noopener noreferrer" aria-label="Baixar na App Store">
                 <img src="assets/apple-store.png" alt="App Store" loading="lazy" />
               </a>
             </div>
           </div>
-          <div class="app-media">
+          <div class="app-media" data-animate>
             <img src="assets/app-mockup.png" alt="Aplicativo FLASH" loading="lazy" />
           </div>
         </div>
       </section>
 
+      <!-- FAQ -->
       <section class="section faq" id="faq">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header" data-animate>
             <span class="section-kicker">Dúvidas</span>
-            <h2>Perguntas frequentes</h2>
+            <h2>Perguntas <span class="gradient-text">frequentes</span></h2>
             <p>Informações rápidas sobre instalação, cobertura e chip 5G.</p>
           </div>
-          <div class="faq-grid">
-            <article class="faq-card">
-              <h3>Como funciona a instalação?</h3>
-              <p>
-                Nossa equipe agenda a visita e instala tudo em poucas horas, sem
-                complicações.
-              </p>
-            </article>
-            <article class="faq-card">
-              <h3>Há cobertura na minha região?</h3>
-              <p>
-                Fale com nosso time no WhatsApp para confirmar cobertura e
-                disponibilidade.
-              </p>
-            </article>
-            <article class="faq-card">
-              <h3>O chip 5G é incluso em todos os planos?</h3>
-              <p>
-                Está incluso em planos selecionados. Confira os detalhes na seção
-                de planos.
-              </p>
-            </article>
+          <div class="faq-list" data-animate>
+            <details class="faq-item glass">
+              <summary>Como funciona a instalação?</summary>
+              <p>Nossa equipe agenda a visita e instala tudo em poucas horas, sem complicações.</p>
+            </details>
+            <details class="faq-item glass">
+              <summary>Há cobertura na minha região?</summary>
+              <p>Fale com nosso time no WhatsApp para confirmar cobertura e disponibilidade.</p>
+            </details>
+            <details class="faq-item glass">
+              <summary>O chip 5G é incluso em todos os planos?</summary>
+              <p>Está incluso em planos selecionados. Confira os detalhes na seção de planos.</p>
+            </details>
           </div>
         </div>
       </section>
 
+      <!-- CONTATO -->
       <section class="section contact" id="contato">
         <div class="container contact-grid">
-          <div class="contact-info">
+          <div class="contact-info" data-animate>
             <span class="section-kicker">Contato</span>
-            <h2>Fale com a FLASH</h2>
+            <h2>Fale com a <span class="gradient-text">FLASH</span></h2>
             <p>Estamos prontos para tirar dúvidas e fechar sua assinatura.</p>
-            <div class="contact-card whatsapp-card">
+            <div class="contact-card whatsapp-card glass">
               <div>
                 <h3>WhatsApp</h3>
                 <p class="contact-detail">
@@ -230,63 +212,49 @@
                   +55 83 3142-0950
                 </p>
               </div>
-              <a
-                class="btn btn-primary"
-                href="https://wa.me/558331420950"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Falar no WhatsApp
-              </a>
+              <a class="btn btn-primary btn-glow" href="https://wa.me/558331420950" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
             </div>
-            <div class="contact-card">
+            <div class="contact-card glass">
               <h3>Localização</h3>
               <p>R. da Mangueira - Centro, Rio Tinto - PB, 58297-000.</p>
               <div class="map-wrapper">
-                <iframe
-                  title="Mapa da FLASH"
-                  src="https://www.google.com/maps?q=R.%20da%20Mangueira%20-%20Centro%2C%20Rio%20Tinto%20-%20PB%2C%2058297-000&output=embed"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
+                <iframe title="Mapa da FLASH" src="https://www.google.com/maps?q=R.%20da%20Mangueira%20-%20Centro%2C%20Rio%20Tinto%20-%20PB%2C%2058297-000&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
           </div>
-          <form class="contact-form" id="form-contato">
+          <form class="contact-form glass" id="form-contato" data-animate>
             <h3>Envie sua mensagem</h3>
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
-            <label for="telefone">Telefone</label>
-            <input
-              type="tel"
-              id="telefone"
-              name="telefone"
-              placeholder="(00) 00000-0000"
-              required
-            />
-            <label for="mensagem">Mensagem</label>
-            <textarea
-              id="mensagem"
-              name="mensagem"
-              placeholder="Como podemos ajudar?"
-              rows="5"
-              required
-            ></textarea>
-            <button class="btn btn-primary" type="submit">
-              Enviar pelo WhatsApp
-            </button>
+            <div class="field-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="field-group">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required />
+            </div>
+            <div class="field-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar?" rows="5" required></textarea>
+            </div>
+            <button class="btn btn-primary btn-glow btn-full" type="submit">Enviar pelo WhatsApp</button>
           </form>
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="container footer-inner">
+        <a class="logo" href="#home"><img src="assets/logo.png" alt="Logo FLASH" loading="lazy" /></a>
         <p>© 2026 FLASH. Todos os direitos reservados.</p>
+        <div class="footer-links">
+          <a href="#planos">Planos</a>
+          <a href="#app">App</a>
+          <a href="#contato">Contato</a>
+        </div>
       </div>
     </footer>
 
     <script src="main.js"></script>
   </body>
 </html>
-
