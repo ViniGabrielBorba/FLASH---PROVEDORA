@@ -1,6 +1,6 @@
 
 /* ============================================================
-   FLASH — main.js v7
+   FLASH — main.js v8 (sem offer bar, sem popup 50%)
    ============================================================ */
 
 "use strict";
@@ -18,40 +18,13 @@ const PLAN_MESSAGES = {
   "149,90": "Olá! Quero assinar o plano FLASH de R$ 149,90 (800 Mega + 3 Chips Flash Móvel com 50GB cada). Pode me passar mais detalhes?",
 };
 
-/* CEPs/bairros com cobertura (exemplo - substitua pelos CEPs reais) */
+/* CEPs com cobertura (substitua pelos CEPs reais) */
 const COVERED_PREFIXES = ["58297", "58296", "58295", "58298"];
 
 const buildWhatsAppLink = (msg) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
 const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
-
-/* ══════════════════════════════════════════════════════════
-   OFFER BAR
-   ══════════════════════════════════════════════════════════ */
-const offerBar   = document.getElementById("offer-bar");
-const offerClose = document.getElementById("offer-bar-close");
-const OFFER_KEY  = "flash_offer_closed";
-
-const initOfferBar = () => {
-  if (!offerBar || sessionStorage.getItem(OFFER_KEY)) return;
-
-  document.body.classList.add("offer-bar-visible");
-  offerBar.style.height = "44px";
-
-  requestAnimationFrame(() => {
-    offerBar.classList.add("visible");
-  });
-
-  offerClose?.addEventListener("click", () => {
-    offerBar.style.height = "0";
-    offerBar.classList.remove("visible");
-    document.body.classList.remove("offer-bar-visible");
-    sessionStorage.setItem(OFFER_KEY, "1");
-  });
-};
-
-initOfferBar();
 
 /* ══════════════════════════════════════════════════════════
    HEADER — scroll behaviour
@@ -99,8 +72,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    const offerH  = document.body.classList.contains("offer-bar-visible") ? 44 : 0;
-    const headerH = (header?.offsetHeight ?? 76) + offerH;
+    const headerH = header?.offsetHeight ?? 76;
     const targetY = target.getBoundingClientRect().top + window.scrollY - headerH;
     window.scrollTo({ top: targetY, behavior: "smooth" });
   });
@@ -215,29 +187,25 @@ if (coverageForm) {
         return;
       }
 
-      /* Show address preview */
-      const city    = data.localidade ?? "";
-      const state   = data.uf ?? "";
-      const street  = data.logradouro ? `${data.logradouro}, ` : "";
+      const city     = data.localidade ?? "";
+      const state    = data.uf ?? "";
+      const street   = data.logradouro ? `${data.logradouro}, ` : "";
       const district = data.bairro ? `${data.bairro} — ` : "";
       coverageAddress.innerHTML = `<strong>📍 Endereço encontrado</strong>${street}${district}${city} - ${state}`;
       coverageAddress.hidden = false;
 
-      /* Check coverage */
       const prefix  = raw.slice(0, 5);
       const covered = COVERED_PREFIXES.includes(prefix) || city.toLowerCase().includes("rio tinto");
 
       if (covered) {
         showCoverageResult(
-          "success",
-          "✅",
+          "success", "✅",
           `Boa notícia! A FLASH <strong>atende sua região</strong> em ${city} - ${state}.`,
           `<a class="coverage-result-action" href="${buildWhatsAppLink(`Olá! Verificando cobertura no CEP ${cepInput.value} em ${city} - ${state}. Quero assinar um plano!`)}" target="_blank" rel="noopener noreferrer">Assinar pelo WhatsApp →</a>`
         );
       } else {
         showCoverageResult(
-          "error",
-          "📡",
+          "error", "📡",
           `Ainda não atendemos <strong>${city} - ${state}</strong> com esse CEP.`,
           `<a class="coverage-result-action" href="${buildWhatsAppLink(`Olá! Moro em ${city} - ${state} (CEP: ${cepInput.value}). Vocês têm previsão de cobertura na minha área?`)}" target="_blank" rel="noopener noreferrer">Avisar quando chegar →</a>`
         );
@@ -247,74 +215,6 @@ if (coverageForm) {
       coverageBtn.disabled = false;
       showCoverageResult("error", "⚠️", "Erro ao consultar o CEP. Verifique sua conexão e tente novamente.");
     }
-  });
-}
-
-/* ══════════════════════════════════════════════════════════
-   EXIT INTENT POPUP
-   ══════════════════════════════════════════════════════════ */
-const popup        = document.getElementById("exit-popup");
-const popupClose   = document.getElementById("popup-close");
-const popupDismiss = document.getElementById("popup-dismiss");
-const popupCopy    = document.getElementById("popup-copy");
-const POPUP_KEY    = "flash_popup_shown";
-let   popupShown   = false;
-
-const showPopup = () => {
-  if (popupShown || sessionStorage.getItem(POPUP_KEY)) return;
-  popupShown = true;
-  sessionStorage.setItem(POPUP_KEY, "1");
-  popup.hidden = false;
-  document.body.style.overflow = "hidden";
-};
-
-const hidePopup = () => {
-  popup.hidden = true;
-  document.body.style.overflow = "";
-};
-
-/* Desktop: mouse leaving viewport (exit intent) */
-document.addEventListener("mouseleave", (e) => {
-  if (e.clientY <= 0) showPopup();
-});
-
-/* Mobile: scroll up quickly after 60% page scroll */
-let lastScrollY = 0;
-let didScrollDeep = false;
-
-window.addEventListener("scroll", () => {
-  const pct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-  if (pct > 0.6) didScrollDeep = true;
-
-  if (didScrollDeep && window.scrollY < lastScrollY - 120) showPopup();
-  lastScrollY = window.scrollY;
-}, { passive: true });
-
-/* Fallback: show after 45s on page */
-setTimeout(showPopup, 45_000);
-
-popupClose?.addEventListener("click",   hidePopup);
-popupDismiss?.addEventListener("click", hidePopup);
-
-popup?.addEventListener("click", (e) => {
-  if (e.target === popup) hidePopup();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !popup?.hidden) hidePopup();
-});
-
-/* Copy promo code */
-if (popupCopy) {
-  popupCopy.addEventListener("click", () => {
-    const code = document.getElementById("popup-code")?.textContent ?? "FLASH50";
-    navigator.clipboard?.writeText(code).catch(() => {});
-    popupCopy.classList.add("copied");
-    popupCopy.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
-    setTimeout(() => {
-      popupCopy.classList.remove("copied");
-      popupCopy.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
-    }, 2000);
   });
 }
 
@@ -336,7 +236,7 @@ if ("IntersectionObserver" in window) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SPEED BARS — animate on scroll
+   SPEED BARS
    ══════════════════════════════════════════════════════════ */
 const speedBars = document.querySelectorAll(".speed-bar[data-pct]");
 
@@ -429,8 +329,7 @@ document.head.appendChild(sheet);
 const sections = document.querySelectorAll("section[id]");
 
 const updateActiveNav = () => {
-  const offerH  = document.body.classList.contains("offer-bar-visible") ? 44 : 0;
-  const scrollY = window.scrollY + (header?.offsetHeight ?? 76) + offerH + 40;
+  const scrollY = window.scrollY + (header?.offsetHeight ?? 76) + 40;
   let current   = "";
   sections.forEach((s) => { if (s.offsetTop <= scrollY) current = s.id; });
   document.querySelectorAll(".nav-link").forEach((l) => {
@@ -440,3 +339,4 @@ const updateActiveNav = () => {
 
 window.addEventListener("scroll", updateActiveNav, { passive: true });
 updateActiveNav();
+
