@@ -5,14 +5,105 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FLASH - Provedora de Internet | Rio Tinto - PB</title>
-    <meta name="description" content="FLASH — internet fibra rápida e estável com planos a partir de R$ 59,90 e chip 5G em planos selecionados. Rio Tinto e região." />
+    <meta name="description" content="FLASH — internet fibra rápida e estável com planos a partir de R$ 59,90 e chip 5G em planos selecionados. Rio Tinto - PB e região." />
     <meta name="theme-color" content="#060d1f" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://flashinternet.com.br/" />
+    <meta property="og:title"       content="FLASH - Internet Fibra | Rio Tinto - PB" />
+    <meta property="og:description" content="Planos de internet a partir de R$ 59,90 com chip 5G incluso em planos selecionados. Instalação rápida e suporte local." />
+    <meta property="og:image"       content="assets/banner-hero.jpg" />
+    <meta property="twitter:card"   content="summary_large_image" />
+
+    <!-- Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://flashinternet.com.br/#business",
+          "name": "FLASH Provedora de Internet",
+          "description": "Provedora de internet fibra com planos residenciais e chip 5G em Rio Tinto - PB.",
+          "url": "https://flashinternet.com.br/",
+          "telephone": "+55-83-3142-0950",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. da Mangueira - Centro",
+            "addressLocality": "Rio Tinto",
+            "addressRegion": "PB",
+            "postalCode": "58297-000",
+            "addressCountry": "BR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -6.7963,
+            "longitude": -35.0574
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          "sameAs": [
+            "https://instagram.com/flash.paraiba",
+            "https://wa.me/558331420950"
+          ],
+          "priceRange": "R$ 59,90 - R$ 149,90"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Como funciona a instalação?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nossa equipe agenda a visita e instala tudo em poucas horas, sem complicações."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Há cobertura na minha região?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Fale com nosso time no WhatsApp para confirmar cobertura e disponibilidade."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "O chip 5G é incluso em todos os planos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Está incluso nos planos da categoria Internet + Chip Flash Móvel."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+
+    <!-- OFFER BAR -->
+    <div class="offer-bar" id="offer-bar" role="banner">
+      <div class="offer-bar-inner container">
+        <span class="offer-bar-icon" aria-hidden="true">🎁</span>
+        <p><strong>Oferta especial:</strong> Instalação <strong>100% gratuita</strong> esse mês + Chip Flash Móvel de brinde!</p>
+        <a class="offer-bar-cta" href="#planos">Ver planos</a>
+      </div>
+      <button class="offer-bar-close" id="offer-bar-close" aria-label="Fechar aviso" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
 
     <!-- HEADER -->
     <header class="site-header" id="topo">
@@ -21,10 +112,11 @@
           <img src="assets/logo.png" alt="Logo da FLASH" loading="lazy" />
         </a>
         <nav class="nav" id="menu-principal" aria-label="Menu principal">
-          <a href="#home" class="nav-link">Home</a>
-          <a href="#planos" class="nav-link">Planos</a>
-          <a href="#app" class="nav-link">Baixar App</a>
-          <a href="#faq" class="nav-link">Dúvidas</a>
+          <a href="#home"    class="nav-link">Home</a>
+          <a href="#planos"  class="nav-link">Planos</a>
+          <a href="#cobertura" class="nav-link">Cobertura</a>
+          <a href="#app"     class="nav-link">App</a>
+          <a href="#faq"     class="nav-link">Dúvidas</a>
           <a href="#contato" class="nav-link">Contato</a>
         </nav>
         <a class="btn btn-primary btn-header btn-glow" href="#planos">Assinar agora</a>
@@ -59,7 +151,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 Ver planos a partir de R$ 59,90
               </a>
-              <a class="btn btn-ghost" href="#contato">Falar com atendente</a>
+              <a class="btn btn-ghost" href="#cobertura">Verificar cobertura</a>
             </div>
             <div class="hero-highlights">
               <div class="highlight glass" data-animate data-animate-delay="100">
@@ -90,7 +182,7 @@
         <div class="hero-banner-wrap" data-animate>
           <div class="container">
             <div class="hero-img-wrapper">
-              <img src="assets/banner-hero.jpg" alt="Banner principal da FLASH" loading="lazy" />
+              <img src="assets/banner-hero.jpg" alt="Banner principal da FLASH" loading="lazy" fetchpriority="high" />
               <div class="hero-img-overlay" aria-hidden="true"></div>
             </div>
           </div>
@@ -147,6 +239,7 @@
                   <h3>FLASH 50 Mega</h3>
                   <p class="price">R$ 59,90<span>/mês</span></p>
                 </div>
+                <div class="speed-bar-wrap" aria-hidden="true"><div class="speed-bar" data-pct="8"></div></div>
                 <ul>
                   <li>50 Mega de velocidade</li>
                   <li>Instalação ágil</li>
@@ -164,6 +257,7 @@
                   <h3>FLASH 300 Mega</h3>
                   <p class="price">R$ 74,90<span>/mês</span></p>
                 </div>
+                <div class="speed-bar-wrap" aria-hidden="true"><div class="speed-bar" data-pct="30"></div></div>
                 <ul>
                   <li>300 Mega de velocidade</li>
                   <li>Ideal para streaming HD</li>
@@ -181,6 +275,7 @@
                   <h3>FLASH 600 Mega</h3>
                   <p class="price">R$ 89,90<span>/mês</span></p>
                 </div>
+                <div class="speed-bar-wrap" aria-hidden="true"><div class="speed-bar" data-pct="60"></div></div>
                 <ul>
                   <li>600 Mega de velocidade</li>
                   <li>Ideal para várias telas</li>
@@ -198,6 +293,7 @@
                   <h3>FLASH 1 Giga</h3>
                   <p class="price">R$ 109,90<span>/mês</span></p>
                 </div>
+                <div class="speed-bar-wrap" aria-hidden="true"><div class="speed-bar speed-bar--gold" data-pct="100"></div></div>
                 <ul>
                   <li>1 Giga de velocidade</li>
                   <li>Ultra rápido para toda família</li>
@@ -232,6 +328,7 @@
                   <h3>FLASH 500 Mega + Chip 1GB</h3>
                   <p class="price">R$ 79,90<span>/mês</span></p>
                 </div>
+                <div class="speed-bar-wrap" aria-hidden="true"><div class="speed-bar" data-pct="50"></div></div>
                 <ul>
                   <li>500 Mega de internet</li>
                   <li>Chip Flash Móvel com 1GB</li>
@@ -250,6 +347,7 @@
                   <h3>FLASH 500 Mega + Chip 25GB</h3>
                   <p class="price">R$ 99,90<span>/mês</span></p>
                 </div>
+                <div class="speed-bar-wrap" aria-hidden="true"><div class="speed-bar speed-bar--orange" data-pct="50"></div></div>
                 <ul>
                   <li>500 Mega de internet</li>
                   <li>Chip Flash Móvel com 25GB</li>
@@ -267,6 +365,7 @@
                   <h3>FLASH 800 Mega + 3 Chips 50GB</h3>
                   <p class="price">R$ 149,90<span>/mês</span></p>
                 </div>
+                <div class="speed-bar-wrap" aria-hidden="true"><div class="speed-bar speed-bar--gold" data-pct="80"></div></div>
                 <ul>
                   <li>800 Mega de internet</li>
                   <li>3 Chips Flash Móvel com 50GB cada</li>
@@ -288,26 +387,172 @@
         </div>
       </section>
 
+      <!-- VERIFICADOR DE COBERTURA -->
+      <section class="section coverage" id="cobertura">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-kicker">Cobertura</span>
+            <h2>Tem FLASH na <span class="gradient-text">sua rua?</span></h2>
+            <p>Digite seu CEP e descubra se atendemos sua região agora mesmo.</p>
+          </div>
+          <div class="coverage-card glass" data-animate>
+            <form class="coverage-form" id="coverage-form" novalidate>
+              <div class="coverage-input-wrap">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="coverage-pin-icon" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <input
+                  type="text"
+                  id="cep-input"
+                  name="cep"
+                  placeholder="00000-000"
+                  maxlength="9"
+                  inputmode="numeric"
+                  autocomplete="postal-code"
+                  aria-label="Digite seu CEP"
+                  required
+                />
+              </div>
+              <button class="btn btn-primary btn-glow" type="submit" id="coverage-btn">
+                <span>Verificar cobertura</span>
+              </button>
+            </form>
+
+            <!-- Result -->
+            <div class="coverage-result" id="coverage-result" aria-live="polite" hidden>
+              <!-- filled by JS -->
+            </div>
+
+            <!-- Address preview -->
+            <div class="coverage-address" id="coverage-address" hidden>
+              <!-- filled by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS -->
+      <section class="section testimonials" id="depoimentos">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-kicker">Depoimentos</span>
+            <h2>O que nossos <span class="gradient-text">clientes dizem</span></h2>
+            <p>Mais de 5.000 famílias conectadas e satisfeitas em Rio Tinto e região.</p>
+          </div>
+          <div class="testimonials-grid" data-animate>
+
+            <article class="testimonial-card glass" data-animate data-animate-delay="0">
+              <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+              <blockquote>
+                "A internet da FLASH é incrível! Nunca caiu desde que instalei. Trabalho em home office e nunca tive problemas. Recomendo muito para todos."
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">A</div>
+                <div>
+                  <strong>Ana Paula S.</strong>
+                  <span>Rio Tinto - PB</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card glass" data-animate data-animate-delay="100">
+              <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+              <blockquote>
+                "Instalação super rápida, pessoal muito educado. O chip que veio com o plano é ótimo, uso para trabalho fora de casa. Vale cada centavo!"
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">C</div>
+                <div>
+                  <strong>Carlos M.</strong>
+                  <span>Rio Tinto - PB</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card glass" data-animate data-animate-delay="200">
+              <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+              <blockquote>
+                "Migrei de outra operadora e a diferença é absurda. A velocidade é real, sem queda. O suporte atende rápido pelo WhatsApp. Muito satisfeita!"
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">F</div>
+                <div>
+                  <strong>Fernanda L.</strong>
+                  <span>Rio Tinto - PB</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card glass" data-animate data-animate-delay="300">
+              <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+              <blockquote>
+                "Tenho o plano família com 3 chips. Toda a família usa sem travar nada, até 4K. Melhor investimento que fiz. Preço justo e serviço excelente."
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">R</div>
+                <div>
+                  <strong>Roberto A.</strong>
+                  <span>Rio Tinto - PB</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card glass" data-animate data-animate-delay="400">
+              <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+              <blockquote>
+                "Atendimento humanizado, instalação no mesmo dia. Internet estável para as crianças estudarem e para eu trabalhar ao mesmo tempo. Top demais!"
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">M</div>
+                <div>
+                  <strong>Mariana T.</strong>
+                  <span>Rio Tinto - PB</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card glass" data-animate data-animate-delay="500">
+              <div class="testimonial-stars" aria-label="5 estrelas">★★★★★</div>
+              <blockquote>
+                "Nunca imaginei ter internet tão boa aqui na região. Roda Netflix, YouTube e videochamada sem travar. A FLASH é diferente das outras!"
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">J</div>
+                <div>
+                  <strong>João P.</strong>
+                  <span>Rio Tinto - PB</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Rating summary -->
+          <div class="rating-summary glass" data-animate>
+            <div class="rating-score">
+              <span class="rating-number">5.0</span>
+              <div class="rating-stars" aria-hidden="true">★★★★★</div>
+              <p>Avaliação média</p>
+            </div>
+            <div class="rating-divider" aria-hidden="true"></div>
+            <div class="rating-bars">
+              <div class="rating-row"><span>5 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:92%"></div></div><span>92%</span></div>
+              <div class="rating-row"><span>4 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:6%"></div></div><span>6%</span></div>
+              <div class="rating-row"><span>3 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:2%"></div></div><span>2%</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- APP -->
       <section class="section app" id="app">
         <div class="container app-grid">
           <div class="app-text" data-animate>
             <span class="section-kicker">Baixar App</span>
             <h2>Controle total na <span class="gradient-text">palma da mão</span></h2>
-            <p>Baixe o app FLASH para acompanhar sua internet, boletos e suporte — tudo em um só lugar.</p>
+            <p>Baixe o app FLASH para acompanhar sua internet, boletos e suporte.</p>
             <ul class="app-features">
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Monitore sua velocidade em tempo real
-              </li>
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Pague sua fatura com poucos cliques
-              </li>
-              <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Suporte 24h direto no app
-              </li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Monitore sua velocidade em tempo real</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Pague sua fatura com poucos cliques</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Suporte 24h direto no app</li>
             </ul>
             <div class="app-buttons">
               <a class="store-badge" href="https://play.google.com/store/apps/details?id=SEU_APP" target="_blank" rel="noopener noreferrer" aria-label="Baixar na Google Play">
@@ -339,11 +584,11 @@
             </details>
             <details class="faq-item glass">
               <summary>Há cobertura na minha região?</summary>
-              <div class="faq-body"><p>Fale com nosso time no WhatsApp para confirmar cobertura e disponibilidade. Atendemos Rio Tinto e diversas cidades da região.</p></div>
+              <div class="faq-body"><p>Use o verificador de CEP acima ou fale com nosso time no WhatsApp para confirmar cobertura e disponibilidade.</p></div>
             </details>
             <details class="faq-item glass">
               <summary>O chip 5G é incluso em todos os planos?</summary>
-              <div class="faq-body"><p>Está incluso nos planos da categoria "Internet + Chip Flash Móvel". Confira os detalhes na seção de planos acima.</p></div>
+              <div class="faq-body"><p>Está incluso nos planos da categoria "Internet + Chip Flash Móvel". Confira os detalhes na seção de planos.</p></div>
             </details>
             <details class="faq-item glass">
               <summary>Qual o prazo de fidelidade?</summary>
@@ -351,7 +596,7 @@
             </details>
             <details class="faq-item glass">
               <summary>Como entro em contato com o suporte?</summary>
-              <div class="faq-body"><p>Você pode falar conosco via WhatsApp, pelo app FLASH, ou comparecer presencialmente em nossa loja no centro de Rio Tinto - PB.</p></div>
+              <div class="faq-body"><p>Você pode falar conosco via WhatsApp, pelo app FLASH, ou comparecer pessoalmente em nossa loja no centro de Rio Tinto - PB.</p></div>
             </details>
           </div>
         </div>
@@ -417,6 +662,7 @@
             <span class="footer-col-title">Navegação</span>
             <a href="#home">Home</a>
             <a href="#planos">Planos</a>
+            <a href="#cobertura">Cobertura</a>
             <a href="#app">App</a>
             <a href="#faq">Dúvidas</a>
             <a href="#contato">Contato</a>
@@ -462,6 +708,29 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       <span class="fab-label">Falar agora</span>
     </a>
+
+    <!-- EXIT INTENT POPUP -->
+    <div class="popup-overlay" id="exit-popup" aria-modal="true" role="dialog" aria-label="Oferta especial" hidden>
+      <div class="popup-card glass">
+        <button class="popup-close" id="popup-close" aria-label="Fechar popup" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="popup-emoji" aria-hidden="true">⚡</div>
+        <h3>Espera! Não vá embora ainda…</h3>
+        <p>Assine <strong>hoje</strong> e ganhe <strong>instalação grátis</strong> + primeiro mês com <strong>50% de desconto</strong>!</p>
+        <div class="popup-offer glass">
+          <span class="popup-offer-label">Código da oferta</span>
+          <span class="popup-offer-code" id="popup-code">FLASH50</span>
+          <button class="popup-copy-btn" id="popup-copy" type="button" aria-label="Copiar código">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+        <a class="btn btn-primary btn-glow btn-full popup-action" href="https://wa.me/558331420950?text=Ol%C3%A1!%20Quero%20aproveitar%20a%20oferta%20FLASH50%20com%2050%25%20de%20desconto%20no%20primeiro%20m%C3%AAs!" target="_blank" rel="noopener noreferrer">
+          Quero aproveitar essa oferta!
+        </a>
+        <button class="popup-dismiss" id="popup-dismiss" type="button">Não, obrigado</button>
+      </div>
+    </div>
 
     <script src="main.js"></script>
   </body>
