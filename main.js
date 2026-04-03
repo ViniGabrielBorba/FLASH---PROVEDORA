@@ -1,6 +1,8 @@
 
 /* ============================================================
-   FLASH — main.js v8 (sem offer bar, sem popup 50%)
+   FLASH — main.js v9
+   Melhorias: throttle no scroll, focus trap no menu, validação
+   inline no formulário, ano dinâmico no footer, e mais.
    ============================================================ */
 
 "use strict";
@@ -18,13 +20,30 @@ const PLAN_MESSAGES = {
   "149,90": "Olá! Quero assinar o plano FLASH de R$ 149,90 (800 Mega + 3 Chips Flash Móvel com 50GB cada). Pode me passar mais detalhes?",
 };
 
-/* CEPs com cobertura (substitua pelos CEPs reais) */
-const COVERED_PREFIXES = ["58297", "58296", "58295", "58298"];
+/* CEPs com cobertura — 5 primeiros dígitos */
+const COVERED_PREFIXES = new Set(["58297", "58296", "58295", "58298"]);
 
 const buildWhatsAppLink = (msg) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
 const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+/* ── Throttle com requestAnimationFrame ────────────────── */
+const rafThrottle = (fn) => {
+  let ticking = false;
+  return (...args) => {
+    if (!ticking) {
+      requestAnimationFrame(() => { fn(...args); ticking = false; });
+      ticking = true;
+    }
+  };
+};
+
+/* ══════════════════════════════════════════════════════════
+   ANO DINÂMICO NO FOOTER
+   ══════════════════════════════════════════════════════════ */
+const footerYear = document.getElementById("footer-year");
+if (footerYear) footerYear.textContent = new Date().getFullYear();
 
 /* ══════════════════════════════════════════════════════════
    HEADER — scroll behaviour
@@ -36,31 +55,52 @@ const updateHeader = () => {
   header.classList.toggle("scrolled", window.scrollY > 10);
 };
 
-window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("scroll", rafThrottle(updateHeader), { passive: true });
 updateHeader();
 
 /* ══════════════════════════════════════════════════════════
-   MOBILE MENU
+   MOBILE MENU + FOCUS TRAP
    ══════════════════════════════════════════════════════════ */
 const menuToggle = document.querySelector(".menu-toggle");
 const nav        = document.querySelector(".nav");
+
+const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])';
 
 const closeMenu = () => {
   nav?.classList.remove("active");
   menuToggle?.setAttribute("aria-expanded", "false");
 };
 
+const openMenu = () => {
+  nav?.classList.add("active");
+  menuToggle?.setAttribute("aria-expanded", "true");
+  /* Foca primeiro link ao abrir */
+  requestAnimationFrame(() => nav?.querySelector(FOCUSABLE)?.focus());
+};
+
 if (menuToggle && nav) {
   menuToggle.addEventListener("click", () => {
-    const isOpen = nav.classList.contains("active");
-    if (isOpen) { closeMenu(); } else {
-      nav.classList.add("active");
-      menuToggle.setAttribute("aria-expanded", "true");
-    }
+    nav.classList.contains("active") ? closeMenu() : openMenu();
   });
+
   nav.querySelectorAll(".nav-link").forEach((l) => l.addEventListener("click", closeMenu));
   document.addEventListener("click", (e) => { if (!header?.contains(e.target)) closeMenu(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+
+  /* Fecha com Escape, faz focus trap com Tab */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { closeMenu(); menuToggle.focus(); return; }
+
+    if (e.key === "Tab" && nav.classList.contains("active") && window.innerWidth < 768) {
+      const focusable = [...nav.querySelectorAll(FOCUSABLE)];
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    }
+  });
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -69,12 +109,16 @@ if (menuToggle && nav) {
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", (e) => {
     const id     = anchor.getAttribute("href").slice(1);
+    if (!id) return;
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
     const headerH = header?.offsetHeight ?? 76;
     const targetY = target.getBoundingClientRect().top + window.scrollY - headerH;
     window.scrollTo({ top: targetY, behavior: "smooth" });
+    /* Foca no destino para leitores de tela */
+    target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
   });
 });
 
@@ -89,18 +133,54 @@ document.querySelectorAll(".whatsapp-plan").forEach((btn) => {
 });
 
 /* ══════════════════════════════════════════════════════════
-   CONTACT FORM
+   CONTACT FORM — validação inline
    ══════════════════════════════════════════════════════════ */
 const form      = document.getElementById("form-contato");
 const submitBtn = document.getElementById("submit-btn");
 
+const setFieldError = (input, errorId, message) => {
+  const err = document.getElementById(errorId);
+  if (!err) return;
+  if (message) {
+    err.textContent = message;
+    err.hidden = false;
+    input.setAttribute("aria-invalid", "true");
+  } else {
+    err.textContent = "";
+    err.hidden = true;
+    input.removeAttribute("aria-invalid");
+  }
+};
+
+const clearFormErrors = () => {
+  [
+    [form?.nome,      "nome-error"],
+    [form?.telefone,  "tel-error"],
+    [form?.mensagem,  "msg-error"],
+  ].forEach(([el, id]) => el && setFieldError(el, id, ""));
+};
+
 if (form && submitBtn) {
+  /* Limpa erro ao digitar */
+  form.addEventListener("input", (e) => {
+    const map = { nome: "nome-error", telefone: "tel-error", mensagem: "msg-error" };
+    const id  = map[e.target.name];
+    if (id) setFieldError(e.target, id, "");
+  });
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    clearFormErrors();
+
     const name    = form.nome.value.trim();
     const phone   = form.telefone.value.trim();
     const message = form.mensagem.value.trim();
-    if (!name || !phone || !message) return;
+
+    let valid = true;
+    if (!name)    { setFieldError(form.nome,     "nome-error", "Por favor, informe seu nome."); valid = false; }
+    if (!phone)   { setFieldError(form.telefone, "tel-error",  "Por favor, informe seu telefone."); valid = false; }
+    if (!message) { setFieldError(form.mensagem, "msg-error",  "Por favor, escreva sua mensagem."); valid = false; }
+    if (!valid) { form.querySelector("[aria-invalid]")?.focus(); return; }
 
     submitBtn.setAttribute("data-loading", "true");
     const spanEl   = submitBtn.querySelector("span");
@@ -109,7 +189,7 @@ if (form && submitBtn) {
 
     setTimeout(() => {
       window.open(
-        buildWhatsAppLink(`Olá! Meu nome é ${name}. Telefone: ${phone}.\n\n${message}`),
+        buildWhatsAppLink(`Olá! Meu nome é ${name}.\nTelefone: ${phone}.\n\n${message}`),
         "_blank", "noopener,noreferrer"
       );
       submitBtn.removeAttribute("data-loading");
@@ -133,6 +213,10 @@ if (cepInput) {
     let v = cepInput.value.replace(/\D/g, "").slice(0, 8);
     if (v.length > 5) v = `${v.slice(0, 5)}-${v.slice(5)}`;
     cepInput.value = v;
+    /* Remove erro ao digitar */
+    cepInput.removeAttribute("aria-invalid");
+    const err = document.getElementById("cep-error");
+    if (err) err.hidden = true;
   });
 }
 
@@ -158,13 +242,21 @@ const showCoverageLoading = () => {
   coverageAddress.hidden = true;
 };
 
+const setCepError = (msg) => {
+  if (!cepInput) return;
+  cepInput.setAttribute("aria-invalid", "true");
+  const err = document.getElementById("cep-error");
+  if (err) { err.textContent = msg; err.hidden = false; }
+};
+
 if (coverageForm) {
   coverageForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const raw = cepInput.value.replace(/\D/g, "");
     if (raw.length !== 8) {
-      showCoverageResult("error", "⚠️", "Por favor, informe um CEP válido com 8 dígitos.");
+      setCepError("Por favor, informe um CEP válido com 8 dígitos.");
+      cepInput.focus();
       return;
     }
 
@@ -176,6 +268,7 @@ if (coverageForm) {
 
     try {
       const res  = await fetch(`https://viacep.com.br/ws/${raw}/json/`);
+      if (!res.ok) throw new Error("HTTP error");
       const data = await res.json();
 
       if (btnSpan) btnSpan.textContent = "Verificar cobertura";
@@ -195,7 +288,7 @@ if (coverageForm) {
       coverageAddress.hidden = false;
 
       const prefix  = raw.slice(0, 5);
-      const covered = COVERED_PREFIXES.includes(prefix) || city.toLowerCase().includes("rio tinto");
+      const covered = COVERED_PREFIXES.has(prefix) || city.toLowerCase().includes("rio tinto");
 
       if (covered) {
         showCoverageResult(
@@ -245,7 +338,10 @@ if ("IntersectionObserver" in window && speedBars.length) {
     (entries) => entries.forEach((e) => {
       if (e.isIntersecting) {
         const pct = e.target.dataset.pct;
-        setTimeout(() => { e.target.style.width = `${pct}%`; }, 200);
+        setTimeout(() => {
+          e.target.style.width = `${pct}%`;
+          e.target.setAttribute("aria-valuenow", pct);
+        }, 200);
         sbIO.unobserve(e.target);
       }
     }),
@@ -265,7 +361,8 @@ const animateCount = (el) => {
   const start  = performance.now();
   const step   = (now) => {
     const t = Math.min((now - start) / DURATION, 1);
-    el.textContent = Math.floor(easeOutExpo(t) * target).toLocaleString("pt-BR");
+    const val = Math.floor(easeOutExpo(t) * target);
+    el.textContent = val.toLocaleString("pt-BR");
     if (t < 1) requestAnimationFrame(step);
     else el.textContent = target.toLocaleString("pt-BR");
   };
@@ -298,33 +395,39 @@ if (phoneInput) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   RIPPLE EFFECT
+   RIPPLE EFFECT (só em dispositivos que suportam hover)
    ══════════════════════════════════════════════════════════ */
-document.querySelectorAll(".btn-primary").forEach((btn) => {
-  btn.addEventListener("click", function (e) {
-    const rect   = this.getBoundingClientRect();
-    const size   = Math.max(rect.width, rect.height) * 2;
-    const ripple = document.createElement("span");
-    Object.assign(ripple.style, {
-      position: "absolute",
-      width: `${size}px`, height: `${size}px`,
-      left: `${e.clientX - rect.left - size / 2}px`,
-      top:  `${e.clientY - rect.top  - size / 2}px`,
-      background: "rgba(255,255,255,0.18)", borderRadius: "50%",
-      transform: "scale(0)", animation: "ripple 0.55s linear",
-      pointerEvents: "none",
-    });
-    this.appendChild(ripple);
-    ripple.addEventListener("animationend", () => ripple.remove());
-  });
-});
+if (window.matchMedia("(hover: hover)").matches) {
+  /* Injeta keyframe uma única vez */
+  const sheet = document.createElement("style");
+  sheet.textContent = `@keyframes ripple { to { transform: scale(1); opacity: 0; } }`;
+  document.head.appendChild(sheet);
 
-const sheet = document.createElement("style");
-sheet.textContent = `@keyframes ripple { to { transform: scale(1); opacity: 0; } }`;
-document.head.appendChild(sheet);
+  document.querySelectorAll(".btn-primary").forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      const rect   = this.getBoundingClientRect();
+      const size   = Math.max(rect.width, rect.height) * 2;
+      const ripple = document.createElement("span");
+      Object.assign(ripple.style, {
+        position:     "absolute",
+        width:        `${size}px`,
+        height:       `${size}px`,
+        left:         `${e.clientX - rect.left - size / 2}px`,
+        top:          `${e.clientY - rect.top  - size / 2}px`,
+        background:   "rgba(255,255,255,0.18)",
+        borderRadius: "50%",
+        transform:    "scale(0)",
+        animation:    "ripple 0.55s linear",
+        pointerEvents:"none",
+      });
+      this.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove());
+    });
+  });
+}
 
 /* ══════════════════════════════════════════════════════════
-   ACTIVE NAV LINK
+   ACTIVE NAV LINK — throttled
    ══════════════════════════════════════════════════════════ */
 const sections = document.querySelectorAll("section[id]");
 
@@ -337,6 +440,6 @@ const updateActiveNav = () => {
   });
 };
 
-window.addEventListener("scroll", updateActiveNav, { passive: true });
+window.addEventListener("scroll", rafThrottle(updateActiveNav), { passive: true });
 updateActiveNav();
 
