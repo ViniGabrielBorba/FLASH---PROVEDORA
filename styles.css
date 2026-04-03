@@ -940,3 +940,26 @@ h1, h2, h3 { text-wrap: balance; }
   .glass { background: transparent; border: 1px solid #ddd; }
   .gradient-text { -webkit-text-fill-color: var(--orange); }
 }
+@media (max-width: 768px) {
+  .cta-mid-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.2rem;
+  }
+
+  .cta-mid-text {
+    width: 100%;
+  }
+
+  .cta-mid-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cta-mid-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
