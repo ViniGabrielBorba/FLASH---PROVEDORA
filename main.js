@@ -1,8 +1,7 @@
-
 /* ============================================================
-   FLASH — main.js v9
-   Melhorias: throttle no scroll, focus trap no menu, validação
-   inline no formulário, ano dinâmico no footer, e mais.
+   FLASH — main.js v10
+   Melhorias: carrossel com contador, transição scale+opacity,
+   pausa no hover, swipe, teclado, barra de progresso.
    ============================================================ */
 
 "use strict";
@@ -15,7 +14,7 @@ const PLAN_MESSAGES = {
   "74,90":  "Olá! Quero assinar o plano FLASH de R$ 74,90 (300 Mega de internet). Pode me passar mais detalhes?",
   "89,90":  "Olá! Quero assinar o plano FLASH de R$ 89,90 (600 Mega de internet). Pode me passar mais detalhes?",
   "109,90": "Olá! Quero assinar o plano FLASH de R$ 109,90 (1 Giga de internet). Pode me passar mais detalhes?",
-  "79,90":  "Olá! Quero assinar o plano FLASH de R$ 79,90 (500 Mega + Chip Flash Móvel com 1GB incluso). Pode me passar mais detalhes?",
+  "79,90":  "Olá! Quero assinar o plano FLASH de R$ 79,90 (500 Mega + Chip Flash Móvel). Pode me passar mais detalhes?",
   "99,90":  "Olá! Quero assinar o plano FLASH de R$ 99,90 (500 Mega + Chip Flash Móvel com 25GB + canais e filmes). Pode me passar mais detalhes?",
   "149,90": "Olá! Quero assinar o plano FLASH de R$ 149,90 (800 Mega + 3 Chips Flash Móvel com 50GB cada). Pode me passar mais detalhes?",
 };
@@ -74,7 +73,6 @@ const closeMenu = () => {
 const openMenu = () => {
   nav?.classList.add("active");
   menuToggle?.setAttribute("aria-expanded", "true");
-  /* Foca primeiro link ao abrir */
   requestAnimationFrame(() => nav?.querySelector(FOCUSABLE)?.focus());
 };
 
@@ -86,7 +84,6 @@ if (menuToggle && nav) {
   nav.querySelectorAll(".nav-link").forEach((l) => l.addEventListener("click", closeMenu));
   document.addEventListener("click", (e) => { if (!header?.contains(e.target)) closeMenu(); });
 
-  /* Fecha com Escape, faz focus trap com Tab */
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") { closeMenu(); menuToggle.focus(); return; }
 
@@ -116,7 +113,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const headerH = header?.offsetHeight ?? 76;
     const targetY = target.getBoundingClientRect().top + window.scrollY - headerH;
     window.scrollTo({ top: targetY, behavior: "smooth" });
-    /* Foca no destino para leitores de tela */
     target.setAttribute("tabindex", "-1");
     target.focus({ preventScroll: true });
   });
@@ -161,7 +157,6 @@ const clearFormErrors = () => {
 };
 
 if (form && submitBtn) {
-  /* Limpa erro ao digitar */
   form.addEventListener("input", (e) => {
     const map = { nome: "nome-error", telefone: "tel-error", mensagem: "msg-error" };
     const id  = map[e.target.name];
@@ -207,13 +202,11 @@ const coverageAddress = document.getElementById("coverage-address");
 const cepInput        = document.getElementById("cep-input");
 const coverageBtn     = document.getElementById("coverage-btn");
 
-/* CEP mask */
 if (cepInput) {
   cepInput.addEventListener("input", () => {
     let v = cepInput.value.replace(/\D/g, "").slice(0, 8);
     if (v.length > 5) v = `${v.slice(0, 5)}-${v.slice(5)}`;
     cepInput.value = v;
-    /* Remove erro ao digitar */
     cepInput.removeAttribute("aria-invalid");
     const err = document.getElementById("cep-error");
     if (err) err.hidden = true;
@@ -395,10 +388,9 @@ if (phoneInput) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   RIPPLE EFFECT (só em dispositivos que suportam hover)
+   RIPPLE EFFECT
    ══════════════════════════════════════════════════════════ */
 if (window.matchMedia("(hover: hover)").matches) {
-  /* Injeta keyframe uma única vez */
   const sheet = document.createElement("style");
   sheet.textContent = `@keyframes ripple { to { transform: scale(1); opacity: 0; } }`;
   document.head.appendChild(sheet);
@@ -427,7 +419,7 @@ if (window.matchMedia("(hover: hover)").matches) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   ACTIVE NAV LINK — throttled
+   ACTIVE NAV LINK
    ══════════════════════════════════════════════════════════ */
 const sections = document.querySelectorAll("section[id]");
 
@@ -443,3 +435,139 @@ const updateActiveNav = () => {
 window.addEventListener("scroll", rafThrottle(updateActiveNav), { passive: true });
 updateActiveNav();
 
+/* ══════════════════════════════════════════════════════════
+   CARROSSEL — versão melhorada com contador e scale+opacity
+   ══════════════════════════════════════════════════════════ */
+(function () {
+  "use strict";
+
+  const carousel    = document.querySelector(".hero-carousel");
+  if (!carousel) return;
+
+  const slides      = carousel.querySelectorAll(".carousel-slide");
+  const dots        = carousel.querySelectorAll(".carousel-dot");
+  const btnPrev     = carousel.querySelector(".carousel-btn--prev");
+  const btnNext     = carousel.querySelector(".carousel-btn--next");
+  const progressBar = document.getElementById("carousel-progress-bar");
+  const counterEl   = carousel.querySelector(".carousel-counter .current");
+
+  if (!slides.length) return;
+
+  const INTERVAL   = 5000;
+  const reduced    = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const total      = slides.length;
+
+  let current  = 0;
+  let timer    = null;
+
+  /* ── Atualiza o contador visual ───────────────────────── */
+  const updateCounter = () => {
+    if (counterEl) counterEl.textContent = current + 1;
+  };
+
+  /* ── Ir para um slide específico ──────────────────────── */
+  const goTo = (index) => {
+    if (index === current) return;
+
+    // Marca o slide saindo com classe "leaving" (CSS cuida da animação)
+    slides[current].classList.remove("active");
+    slides[current].classList.add("leaving");
+    slides[current].setAttribute("aria-hidden", "true");
+    dots[current].classList.remove("active");
+    dots[current].setAttribute("aria-selected", "false");
+
+    // Remove "leaving" depois da transição
+    const prev = slides[current];
+    setTimeout(() => prev.classList.remove("leaving"), 800);
+
+    // Ativa o novo slide
+    current = ((index % total) + total) % total;
+    slides[current].classList.add("active");
+    slides[current].removeAttribute("aria-hidden");
+    dots[current].classList.add("active");
+    dots[current].setAttribute("aria-selected", "true");
+
+    updateCounter();
+    resetProgress();
+  };
+
+  const next = () => goTo(current + 1);
+  const prev = () => goTo(current - 1);
+
+  /* ── Temporizador automático ──────────────────────────── */
+  const startAuto = () => {
+    if (reduced) return;
+    clearInterval(timer);
+    timer = setInterval(next, INTERVAL);
+  };
+
+  const stopAuto = () => clearInterval(timer);
+
+  /* ── Barra de progresso ───────────────────────────────── */
+  const resetProgress = () => {
+    if (!progressBar || reduced) return;
+    progressBar.style.transition = "none";
+    progressBar.style.width = "0%";
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        progressBar.style.transition = `width ${INTERVAL}ms linear`;
+        progressBar.style.width = "100%";
+      });
+    });
+  };
+
+  /* ── Inicializa ───────────────────────────────────────── */
+  updateCounter();
+  startAuto();
+  resetProgress();
+
+  /* ── Botões anterior / próximo ────────────────────────── */
+  btnPrev?.addEventListener("click", () => { prev(); startAuto(); });
+  btnNext?.addEventListener("click", () => { next(); startAuto(); });
+
+  /* ── Clique nos pontos ────────────────────────────────── */
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => { goTo(i); startAuto(); });
+  });
+
+  /* ── Pausa ao passar o mouse ──────────────────────────── */
+  carousel.addEventListener("mouseenter", () => {
+    stopAuto();
+    if (progressBar && !reduced) progressBar.style.transition = "none";
+  });
+
+  carousel.addEventListener("mouseleave", () => {
+    startAuto();
+    resetProgress();
+  });
+
+  carousel.addEventListener("focusin",  () => stopAuto());
+  carousel.addEventListener("focusout", (e) => {
+    if (!carousel.contains(e.relatedTarget)) {
+      startAuto();
+      resetProgress();
+    }
+  });
+
+  /* ── Swipe (toque no celular) ─────────────────────────── */
+  let touchStartX = 0;
+
+  carousel.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  carousel.addEventListener("touchend", (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? next() : prev();
+      startAuto();
+    }
+  }, { passive: true });
+
+  /* ── Setas do teclado ─────────────────────────────────── */
+  carousel.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft")  { prev(); startAuto(); }
+    if (e.key === "ArrowRight") { next(); startAuto(); }
+  });
+
+})();
