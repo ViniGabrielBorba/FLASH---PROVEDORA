@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR" class="no-js">
   <head>
@@ -68,12 +67,10 @@
 
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Remove no-js class immediately -->
     <script>document.documentElement.classList.remove('no-js');</script>
   </head>
   <body>
 
-    <!-- SKIP TO MAIN (acessibilidade) -->
     <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
 
     <!-- HEADER -->
@@ -108,69 +105,191 @@
     <main id="main-content">
 
       <!-- HERO -->
-      <section class="hero" id="home" aria-labelledby="hero-heading">
-        <div class="hero-grid-bg" aria-hidden="true"></div>
-        <div class="hero-orbs" aria-hidden="true">
-          <div class="orb orb-1"></div>
-          <div class="orb orb-2"></div>
-          <div class="orb orb-3"></div>
+     <!-- HERO -->
+<section class="hero" id="home" aria-labelledby="hero-heading">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+
+  <div class="hero-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content" data-animate>
+      <span class="pill" role="note">
+        <span class="pill-dot" aria-hidden="true"></span>
+        Internet Fibra + Chip Móvel Flash
+        <span class="pill-badge">5G</span>
+      </span>
+
+      <h1 id="hero-heading">
+        FLASH<br />
+        <span class="gradient-text">Internet para sua casa e conexão para todo lugar</span>
+      </h1>
+
+      <p class="hero-description">
+        Tenha mais velocidade, estabilidade e praticidade no seu dia a dia com a FLASH.
+        Escolha planos de <strong>internet fibra</strong> com opções que incluem
+        <strong>chip móvel 5G</strong>, <strong>instalação rápida</strong>,
+        <strong>suporte local</strong> e atendimento ágil pelo WhatsApp.
+      </p>
+
+      <div class="hero-mini-benefits" role="list" aria-label="Principais vantagens da FLASH">
+        <span class="hero-mini-benefit" role="listitem">✔ Planos a partir de R$ 59,90</span>
+        <span class="hero-mini-benefit" role="listitem">✔ Chip 5G em planos selecionados</span>
+        <span class="hero-mini-benefit" role="listitem">✔ Instalação rápida</span>
+        <span class="hero-mini-benefit" role="listitem">✔ Atendimento local</span>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-glow btn-lg" href="#planos">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          Ver planos e escolher o ideal
+        </a>
+
+        <a class="btn btn-ghost btn-lg" href="#cobertura">
+          Verificar cobertura
+        </a>
+      </div>
+
+      <div class="hero-proof-bar glass" aria-label="Diferenciais da FLASH">
+        <div class="hero-proof-item">
+          <strong>Atendimento rápido</strong>
+          <span>Equipe pronta para ajudar você</span>
         </div>
 
-        <div class="container">
-          <div class="hero-content" data-animate>
-            <span class="pill" role="note">
-              <span class="pill-dot" aria-hidden="true"></span>
-              Internet + Chip Móvel Flash
-              <span class="pill-badge">5G</span>
-            </span>
-            <h1 id="hero-heading">FLASH<br><span class="gradient-text">A Conexão Perfeita</span></h1>
-            <p>Internet fibra rápida e estável + chip 5G incluso em planos selecionados.<br />Atendimento ágil, instalação prática e controle total no app.</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary btn-glow btn-lg" href="#planos">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                Ver planos a partir de R$ 59,90
-              </a>
-              <a class="btn btn-ghost" href="#cobertura">Verificar cobertura</a>
-            </div>
-            <div class="hero-highlights" role="list">
-              <div class="highlight glass" role="listitem" data-animate data-animate-delay="100">
-                <span class="highlight-icon" aria-hidden="true">⚡</span>
-                <div class="highlight-body">
-                  <strong>Wi-Fi rápido e estável</strong>
-                  <p>Velocidade para trabalho e streaming.</p>
-                </div>
-              </div>
-              <div class="highlight glass" role="listitem" data-animate data-animate-delay="200">
-                <span class="highlight-icon" aria-hidden="true">📱</span>
-                <div class="highlight-body">
-                  <strong>Chip Flash Móvel</strong>
-                  <p>Conexão fora de casa quando precisar.</p>
-                </div>
-              </div>
-              <div class="highlight glass" role="listitem" data-animate data-animate-delay="300">
-                <span class="highlight-icon" aria-hidden="true">🔧</span>
-                <div class="highlight-body">
-                  <strong>Suporte e instalação</strong>
-                  <p>Equipe local pronta para ajudar.</p>
-                </div>
-              </div>
-            </div>
+        <div class="hero-proof-item">
+          <strong>Mais estabilidade</strong>
+          <span>Ideal para assistir, estudar e trabalhar</span>
+        </div>
+
+        <div class="hero-proof-item">
+          <strong>Conexão completa</strong>
+          <span>Internet em casa + mobilidade no celular</span>
+        </div>
+      </div>
+
+      <div class="hero-highlights" role="list">
+        <div class="highlight glass" role="listitem" data-animate data-animate-delay="100">
+          <span class="highlight-icon" aria-hidden="true">⚡</span>
+          <div class="highlight-body">
+            <strong>Internet estável</strong>
+            <p>Velocidade para navegar, trabalhar e assistir sem travar.</p>
           </div>
         </div>
 
+        <div class="highlight glass" role="listitem" data-animate data-animate-delay="200">
+          <span class="highlight-icon" aria-hidden="true">📱</span>
+          <div class="highlight-body">
+            <strong>Chip Flash Móvel 5G</strong>
+            <p>Mais liberdade para continuar conectado fora de casa.</p>
+          </div>
+        </div>
+
+        <div class="highlight glass" role="listitem" data-animate data-animate-delay="300">
+          <span class="highlight-icon" aria-hidden="true">🛠️</span>
+          <div class="highlight-body">
+            <strong>Instalação e suporte local</strong>
+            <p>Atendimento próximo e mais agilidade quando você precisar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <!-- CARROSSEL -->
         <div class="hero-banner-wrap" data-animate>
           <div class="container">
-            <div class="hero-img-wrapper">
-              <!-- fetchpriority="high" — não usar loading="lazy" no hero -->
-              <img
-                src="assets/banner-hero.jpg"
-                alt="Família conectada com internet FLASH em Rio Tinto - PB"
-                fetchpriority="high"
-                decoding="async"
-                width="1140"
-                height="560"
-              />
-              <div class="hero-img-overlay" aria-hidden="true"></div>
+            <div
+              class="hero-carousel"
+              role="region"
+              aria-label="Carrossel de banners FLASH"
+              aria-roledescription="carrossel"
+            >
+              <div class="carousel-track" id="carousel-track" aria-live="off">
+
+                <!-- SLIDE 1 -->
+                <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 de 3">
+                  <img
+                    src="assets/banner-hero.jpg"
+                    alt="Família conectada com internet FLASH em Rio Tinto - PB"
+                    fetchpriority="high"
+                    decoding="async"
+                    width="1140"
+                    height="560"
+                  />
+                  <div class="carousel-slide-overlay" aria-hidden="true">
+                    <span class="carousel-slide-tag">Internet Fibra + Chip 5G</span>
+                    <h3>A Conexão Perfeita</h3>
+                    <p>Internet rápida e estável para toda a família</p>
+                  </div>
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 de 3" aria-hidden="true">
+                  <img
+                    src="assets/banner-2.jpg"
+                    alt="Chip Flash Móvel 5G — conecte-se em qualquer lugar"
+                    loading="lazy"
+                    decoding="async"
+                    width="1140"
+                    height="560"
+                  />
+                  <div class="carousel-slide-overlay" aria-hidden="true">
+                    <span class="carousel-slide-tag">Chip Flash Móvel</span>
+                    <h3>Internet na Rua Também</h3>
+                    <p>Chip 5G incluso em planos selecionados</p>
+                  </div>
+                </div>
+
+                <!-- SLIDE 3 -->
+                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 de 3" aria-hidden="true">
+                  <img
+                    src="assets/banner-3.jpg"
+                    alt="Planos FLASH a partir de R$ 59,90 por mês"
+                    loading="lazy"
+                    decoding="async"
+                    width="1140"
+                    height="560"
+                  />
+                  <div class="carousel-slide-overlay" aria-hidden="true">
+                    <span class="carousel-slide-tag">Planos a partir de</span>
+                    <h3>R$ 59,90 por mês</h3>
+                    <p>Instalação rápida e suporte local em Rio Tinto - PB</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Contador (novidade) -->
+              <div class="carousel-counter" aria-hidden="true">
+                <span class="current">1</span> / 3
+              </div>
+
+              <button class="carousel-btn carousel-btn--prev" aria-label="Slide anterior" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+
+              <button class="carousel-btn carousel-btn--next" aria-label="Próximo slide" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+
+              <!-- Pontos — centralizados embaixo -->
+              <div class="carousel-dots" role="tablist" aria-label="Selecionar slide">
+                <button class="carousel-dot active" role="tab" aria-selected="true"  aria-label="Slide 1" data-index="0" type="button"></button>
+                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 2" data-index="1" type="button"></button>
+                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 3" data-index="2" type="button"></button>
+              </div>
+
+              <!-- Barra de progresso -->
+              <div class="carousel-progress" aria-hidden="true">
+                <div class="carousel-progress-bar" id="carousel-progress-bar"></div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -237,82 +356,121 @@
               </div>
               <div>
                 <h3 class="plans-group-title">Somente Internet</h3>
-                <p class="plans-group-subtitle">Planos sem chip, pura velocidade em casa</p>
+                <p class="plans-group-subtitle">Planos sem chip — pura velocidade em casa</p>
               </div>
             </div>
             <div class="plans-grid plans-grid-4">
 
+              <!-- Card 50 Mega -->
               <article class="plan-card glass" data-animate data-animate-delay="100">
+                <div class="plan-card-accent plan-card-accent--blue"></div>
                 <div class="plan-head">
                   <div class="plan-speed-badge">50 Mbps</div>
                   <h3>FLASH 50 Mega</h3>
-                  <p class="price">R$ 59,90<span>/mês</span></p>
+                  <div class="price-row">
+                    <p class="price">R$ 59,90<span>/mês</span></p>
+                  </div>
                 </div>
-                <div class="speed-bar-wrap" aria-label="Velocidade relativa: 8%"><div class="speed-bar" data-pct="8" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div></div>
-                <ul>
-                  <li>50 Mega de velocidade</li>
-                  <li>Instalação ágil</li>
-                  <li>Suporte local</li>
-                </ul>
-                <button class="btn btn-outline whatsapp-plan" type="button" data-plan="59,90" aria-label="Assinar plano FLASH 50 Mega pelo WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Assinar no WhatsApp
-                </button>
+                <div class="plan-body">
+                  <div class="speed-bar-wrap" aria-label="Velocidade relativa: 8%">
+                    <div class="speed-bar" data-pct="8" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <ul>
+                    <li>50 Mega de velocidade</li>
+                    <li>Instalação ágil</li>
+                    <li>Suporte local</li>
+                  </ul>
+                </div>
+                <div class="plan-card-footer">
+                  <button class="btn btn-outline btn-full whatsapp-plan" type="button" data-plan="59,90" aria-label="Assinar plano FLASH 50 Mega pelo WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Assinar no WhatsApp
+                  </button>
+                </div>
               </article>
 
+              <!-- Card 300 Mega -->
               <article class="plan-card glass" data-animate data-animate-delay="200">
+                <div class="plan-card-accent plan-card-accent--blue"></div>
                 <div class="plan-head">
                   <div class="plan-speed-badge">300 Mbps</div>
                   <h3>FLASH 300 Mega</h3>
-                  <p class="price">R$ 74,90<span>/mês</span></p>
+                  <div class="price-row">
+                    <p class="price">R$ 74,90<span>/mês</span></p>
+                  </div>
                 </div>
-                <div class="speed-bar-wrap" aria-label="Velocidade relativa: 30%"><div class="speed-bar" data-pct="30" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div></div>
-                <ul>
-                  <li>300 Mega de velocidade</li>
-                  <li>Ideal para streaming HD</li>
-                  <li>Suporte e instalação</li>
-                </ul>
-                <button class="btn btn-outline whatsapp-plan" type="button" data-plan="74,90" aria-label="Assinar plano FLASH 300 Mega pelo WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Assinar no WhatsApp
-                </button>
+                <div class="plan-body">
+                  <div class="speed-bar-wrap" aria-label="Velocidade relativa: 30%">
+                    <div class="speed-bar" data-pct="30" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <ul>
+                    <li>300 Mega de velocidade</li>
+                    <li>Ideal para streaming HD</li>
+                    <li>Suporte e instalação</li>
+                  </ul>
+                </div>
+                <div class="plan-card-footer">
+                  <button class="btn btn-outline btn-full whatsapp-plan" type="button" data-plan="74,90" aria-label="Assinar plano FLASH 300 Mega pelo WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Assinar no WhatsApp
+                  </button>
+                </div>
               </article>
 
+              <!-- Card 600 Mega -->
               <article class="plan-card glass" data-animate data-animate-delay="300">
+                <div class="plan-card-accent plan-card-accent--blue"></div>
                 <div class="plan-head">
                   <div class="plan-speed-badge">600 Mbps</div>
                   <h3>FLASH 600 Mega</h3>
-                  <p class="price">R$ 89,90<span>/mês</span></p>
+                  <div class="price-row">
+                    <p class="price">R$ 89,90<span>/mês</span></p>
+                  </div>
                 </div>
-                <div class="speed-bar-wrap" aria-label="Velocidade relativa: 60%"><div class="speed-bar" data-pct="60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div></div>
-                <ul>
-                  <li>600 Mega de velocidade</li>
-                  <li>Ideal para várias telas</li>
-                  <li>Suporte e instalação</li>
-                </ul>
-                <button class="btn btn-outline whatsapp-plan" type="button" data-plan="89,90" aria-label="Assinar plano FLASH 600 Mega pelo WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Assinar no WhatsApp
-                </button>
+                <div class="plan-body">
+                  <div class="speed-bar-wrap" aria-label="Velocidade relativa: 60%">
+                    <div class="speed-bar" data-pct="60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <ul>
+                    <li>600 Mega de velocidade</li>
+                    <li>Ideal para várias telas</li>
+                    <li>Suporte e instalação</li>
+                  </ul>
+                </div>
+                <div class="plan-card-footer">
+                  <button class="btn btn-outline btn-full whatsapp-plan" type="button" data-plan="89,90" aria-label="Assinar plano FLASH 600 Mega pelo WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Assinar no WhatsApp
+                  </button>
+                </div>
               </article>
 
+              <!-- Card 1 Giga -->
               <article class="plan-card glass" data-animate data-animate-delay="400">
-                <div class="plan-card-accent plan-card-accent--gold" aria-hidden="true"></div>
+                <div class="plan-card-accent plan-card-accent--gold"></div>
                 <div class="plan-head">
                   <div class="plan-speed-badge plan-speed-badge--gold">1 Gbps</div>
                   <h3>FLASH 1 Giga</h3>
-                  <p class="price price--gold">R$ 109,90<span>/mês</span></p>
+                  <div class="price-row">
+                    <p class="price price--gold">R$ 109,90<span>/mês</span></p>
+                  </div>
                 </div>
-                <div class="speed-bar-wrap" aria-label="Velocidade relativa: 100%"><div class="speed-bar speed-bar--gold" data-pct="100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div></div>
-                <ul>
-                  <li>1 Giga de velocidade</li>
-                  <li>Ultra rápido para toda família</li>
-                  <li>Suporte e instalação</li>
-                </ul>
-                <button class="btn btn-outline-gold whatsapp-plan" type="button" data-plan="109,90" aria-label="Assinar plano FLASH 1 Giga pelo WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Assinar no WhatsApp
-                </button>
+                <div class="plan-body">
+                  <div class="speed-bar-wrap" aria-label="Velocidade relativa: 100%">
+                    <div class="speed-bar speed-bar--gold" data-pct="100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <ul>
+                    <li>1 Giga de velocidade</li>
+                    <li>Ultra rápido para toda família</li>
+                    <li>Suporte e instalação</li>
+                  </ul>
+                </div>
+                <div class="plan-card-footer">
+                  <button class="btn btn-outline-gold btn-full whatsapp-plan" type="button" data-plan="109,90" aria-label="Assinar plano FLASH 1 Giga pelo WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Assinar no WhatsApp
+                  </button>
+                </div>
               </article>
 
             </div>
@@ -340,93 +498,118 @@
 
             <div class="plans-grid">
 
-              <!-- CARD 1 — chip básico -->
+              <!-- Card 500 + Chip básico -->
               <article class="plan-card glass plan-card--chip" data-animate data-animate-delay="100">
-                <div class="chip-visual">
-                  <div class="chip-visual-frame">
-                    <img src="imagens/chip.png" alt="Chip Flash Móvel 5G" loading="lazy" />
-                    <div class="chip-visual-glow" aria-hidden="true"></div>
-                  </div>
-                  <span class="chip-visual-label">Chip Flash Móvel incluso</span>
-                </div>
+                <div class="plan-card-accent plan-card-accent--blue"></div>
                 <div class="plan-head">
+                  <div class="chip-visual">
+                    <div class="chip-visual-frame">
+                      <img src="imagens/chip.png" alt="Chip Flash Móvel 5G" loading="lazy" />
+                      <div class="chip-visual-glow" aria-hidden="true"></div>
+                    </div>
+                    <span class="chip-visual-label">Chip Flash Móvel incluso</span>
+                  </div>
                   <div class="plan-speed-badge">500 Mbps</div>
-                  <h3>FLASH 500 Mega + Chip Móvel</h3>
-                  <p class="price">R$ 79,90<span>/mês</span></p>
+                  <h3>FLASH 500 + Chip Móvel</h3>
+                  <div class="price-row">
+                    <p class="price">R$ 79,90<span>/mês</span></p>
+                  </div>
                 </div>
-                <div class="speed-bar-wrap" aria-label="Velocidade relativa: 50%"><div class="speed-bar" data-pct="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
-                <ul>
-                  <li>500 Mega de internet</li>
-                  <li>Chip Flash Móvel incluso</li>
-                  <li>Suporte e instalação ágeis</li>
-                </ul>
-                <button class="btn btn-outline whatsapp-plan" type="button" data-plan="79,90" aria-label="Assinar plano FLASH 500 Mega com Chip Móvel pelo WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Assinar no WhatsApp
-                </button>
+                <div class="plan-body">
+                  <div class="speed-bar-wrap" aria-label="Velocidade relativa: 50%">
+                    <div class="speed-bar" data-pct="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <ul>
+                    <li>500 Mega de internet</li>
+                    <li>Chip Flash Móvel incluso</li>
+                    <li>Suporte e instalação ágeis</li>
+                  </ul>
+                </div>
+                <div class="plan-card-footer">
+                  <button class="btn btn-outline btn-full whatsapp-plan" type="button" data-plan="79,90" aria-label="Assinar plano FLASH 500 Mega com Chip Móvel pelo WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Assinar no WhatsApp
+                  </button>
+                </div>
               </article>
 
-              <!-- CARD 2 — MAIS ESCOLHIDO -->
+              <!-- Card MAIS ESCOLHIDO -->
               <article class="plan-card glass featured plan-card--chip" data-animate data-animate-delay="200">
-                <div class="plan-card-accent plan-card-accent--orange" aria-hidden="true"></div>
-                <div class="badge">⭐ Mais escolhido</div>
-                <div class="chip-visual chip-visual--featured">
-                  <div class="chip-visual-frame chip-visual-frame--orange">
-                    <img src="imagens/chip.png" alt="Chip Flash Móvel 5G 25GB" loading="lazy" />
-                    <div class="chip-visual-glow chip-visual-glow--orange" aria-hidden="true"></div>
-                  </div>
-                  <span class="chip-visual-label chip-visual-label--orange">25GB • Chip incluso</span>
-                </div>
+                <div class="plan-card-accent plan-card-accent--orange"></div>
                 <div class="plan-head">
+                  <div class="badge">⭐ Mais escolhido</div>
+                  <div class="chip-visual chip-visual--featured">
+                    <div class="chip-visual-frame chip-visual-frame--orange">
+                      <img src="imagens/chip.png" alt="Chip Flash Móvel 5G 25GB" loading="lazy" />
+                      <div class="chip-visual-glow chip-visual-glow--orange" aria-hidden="true"></div>
+                    </div>
+                    <span class="chip-visual-label chip-visual-label--orange">25GB • Chip incluso</span>
+                  </div>
                   <div class="plan-speed-badge plan-speed-badge--orange">500 Mbps</div>
-                  <h3>FLASH 500 Mega + Chip Móvel 25GB</h3>
-                  <p class="price price--orange">R$ 99,90<span>/mês</span></p>
+                  <h3>FLASH 500 + Chip 25GB</h3>
+                  <div class="price-row">
+                    <p class="price price--orange">R$ 99,90<span>/mês</span></p>
+                  </div>
                 </div>
-                <div class="speed-bar-wrap" aria-label="Velocidade relativa: 50%"><div class="speed-bar speed-bar--orange" data-pct="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div></div>
-                <ul>
-                  <li>500 Mega de internet</li>
-                  <li>Chip Flash Móvel com 25GB</li>
-                  <li>Conteúdo de canais e filmes</li>
-                </ul>
-                <button class="btn btn-primary btn-glow whatsapp-plan" type="button" data-plan="99,90" aria-label="Assinar plano mais escolhido: FLASH 500 Mega com Chip 25GB pelo WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Assinar no WhatsApp
-                </button>
+                <div class="plan-body">
+                  <div class="speed-bar-wrap" aria-label="Velocidade relativa: 50%">
+                    <div class="speed-bar speed-bar--orange" data-pct="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <ul>
+                    <li>500 Mega de internet</li>
+                    <li>Chip Flash Móvel com 25GB</li>
+                    <li>Conteúdo de canais e filmes</li>
+                  </ul>
+                </div>
+                <div class="plan-card-footer">
+                  <button class="btn btn-primary btn-glow btn-full whatsapp-plan" type="button" data-plan="99,90" aria-label="Assinar plano mais escolhido: FLASH 500 Mega com Chip 25GB pelo WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Assinar no WhatsApp
+                  </button>
+                </div>
               </article>
 
-              <!-- CARD 3 — família -->
+              <!-- Card família 3 chips -->
               <article class="plan-card glass plan-card--chip" data-animate data-animate-delay="300">
-                <div class="plan-card-accent plan-card-accent--gold" aria-hidden="true"></div>
-                <div class="chip-visual chip-visual--triple">
-                  <div class="chip-visual-stack" aria-hidden="true">
-                    <div class="chip-visual-frame chip-visual-frame--gold chip-stack-1">
-                      <img src="imagens/chip.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="chip-visual-frame chip-visual-frame--gold chip-stack-2">
-                      <img src="imagens/chip.png" alt="" loading="lazy" />
-                    </div>
-                    <div class="chip-visual-frame chip-visual-frame--gold chip-stack-3">
-                      <img src="imagens/chip.png" alt="3 Chips Flash Móvel 5G 50GB" loading="lazy" />
-                      <div class="chip-visual-glow chip-visual-glow--gold" aria-hidden="true"></div>
-                    </div>
-                  </div>
-                  <span class="chip-visual-label chip-visual-label--gold">3 Chips • 50GB </span>
-                </div>
+                <div class="plan-card-accent plan-card-accent--gold"></div>
                 <div class="plan-head">
+                  <div class="chip-visual chip-visual--triple">
+                    <div class="chip-visual-stack" aria-hidden="true">
+                      <div class="chip-visual-frame chip-visual-frame--gold chip-stack-1">
+                        <img src="imagens/chip.png" alt="" loading="lazy" />
+                      </div>
+                      <div class="chip-visual-frame chip-visual-frame--gold chip-stack-2">
+                        <img src="imagens/chip.png" alt="" loading="lazy" />
+                      </div>
+                      <div class="chip-visual-frame chip-visual-frame--gold chip-stack-3">
+                        <img src="imagens/chip.png" alt="3 Chips Flash Móvel 5G 50GB" loading="lazy" />
+                        <div class="chip-visual-glow chip-visual-glow--gold" aria-hidden="true"></div>
+                      </div>
+                    </div>
+                    <span class="chip-visual-label chip-visual-label--gold">3 Chips • 50GB cada</span>
+                  </div>
                   <div class="plan-speed-badge plan-speed-badge--gold">800 Mbps</div>
-                  <h3>FLASH 800 Mega + 3 Chips Móvel</h3>
-                  <p class="price price--gold">R$ 149,90<span>/mês</span></p>
+                  <h3>FLASH 800 + 3 Chips 50GB</h3>
+                  <div class="price-row">
+                    <p class="price price--gold">R$ 149,90<span>/mês</span></p>
+                  </div>
                 </div>
-                <div class="speed-bar-wrap" aria-label="Velocidade relativa: 80%"><div class="speed-bar speed-bar--gold" data-pct="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
-                <ul>
-                  <li>800 Mega de internet</li>
-                  <li>3 Chips Flash Móvel com 50GB </li>
-                  <li>Perfeito para toda a família</li>
-                </ul>
-                <button class="btn btn-outline-gold whatsapp-plan" type="button" data-plan="149,90" aria-label="Assinar plano FLASH 800 Mega com 3 Chips 50GB pelo WhatsApp">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Assinar no WhatsApp
-                </button>
+                <div class="plan-body">
+                  <div class="speed-bar-wrap" aria-label="Velocidade relativa: 80%">
+                    <div class="speed-bar speed-bar--gold" data-pct="80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <ul>
+                    <li>800 Mega de internet</li>
+                    <li>3 Chips Flash Móvel com 50GB cada</li>
+                    <li>Perfeito para toda a família</li>
+                  </ul>
+                </div>
+                <div class="plan-card-footer">
+                  <button class="btn btn-outline-gold btn-full whatsapp-plan" type="button" data-plan="149,90" aria-label="Assinar plano FLASH 800 Mega com 3 Chips 50GB pelo WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Assinar no WhatsApp
+                  </button>
+                </div>
               </article>
 
             </div>
