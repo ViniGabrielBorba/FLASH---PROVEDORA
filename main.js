@@ -571,3 +571,57 @@ updateActiveNav();
   });
 
 })();
+/* ══════════════════════════════════════════════════════════
+   PLANOS — INDICADOR DE POSIÇÃO NO CARROSSEL MOBILE
+   Cole este bloco no FINAL do seu main.js
+   ══════════════════════════════════════════════════════════ */
+(function () {
+  "use strict";
+
+  /* Só roda em telas pequenas */
+  if (window.innerWidth > 639) return;
+
+  /* Para cada grupo de planos (.plans-grid e .plans-grid-4) */
+  document.querySelectorAll(".plans-grid, .plans-grid-4").forEach((grid) => {
+    const cards = grid.querySelectorAll(".plan-card");
+    if (cards.length < 2) return;
+
+    /* Cria o container de bolinhas logo abaixo do carrossel */
+    const hint = document.createElement("div");
+    hint.className = "plans-swipe-hint";
+    hint.setAttribute("aria-hidden", "true");
+
+    cards.forEach((_, i) => {
+      const dot = document.createElement("span");
+      if (i === 0) dot.classList.add("active");
+      hint.appendChild(dot);
+    });
+
+    /* Insere depois do grid */
+    grid.insertAdjacentElement("afterend", hint);
+
+    const dots = hint.querySelectorAll("span");
+
+    /* Atualiza a bolinha ativa conforme o scroll */
+    const updateDots = () => {
+      /* Descobre qual card está mais visível */
+      const gridLeft   = grid.scrollLeft;
+      const cardWidth  = cards[0].offsetWidth + 16; /* largura + gap */
+      const active     = Math.round(gridLeft / cardWidth);
+
+      dots.forEach((d, i) => d.classList.toggle("active", i === active));
+    };
+
+    grid.addEventListener("scroll", updateDots, { passive: true });
+
+    /* Clique nas bolinhas rola até o card correspondente */
+    dots.forEach((dot, i) => {
+      dot.style.cursor = "pointer";
+      dot.addEventListener("click", () => {
+        const cardWidth = cards[0].offsetWidth + 16;
+        grid.scrollTo({ left: cardWidth * i, behavior: "smooth" });
+      });
+    });
+  });
+
+})();
