@@ -1597,3 +1597,105 @@ h1, h2, h3 { text-wrap: balance; }
   .plans-grid-4 { grid-template-columns: repeat(4, 1fr); }
   .footer-top   { grid-template-columns: 1.6fr 0.8fr 1fr 1.2fr; }
 }
+@media (max-width: 639px) {
+
+  /* ── Container do carrossel ─────────────────────────── */
+  .plans-grid,
+  .plans-grid-4 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    /* Scroll horizontal com snap */
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    /* Esconde scrollbar visualmente, mas mantém o arraste */
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE 11 */
+
+    /* Espaçamentos para os cards não grudarem nas bordas */
+    gap: 1rem;
+    padding-bottom: 1.2rem;
+
+    /* Extende até as bordas do container pai para padding ficar bonito */
+    margin-left:  calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left:  4%;
+    padding-right: 4%;
+  }
+
+  /* Esconde scrollbar no Chrome/Safari */
+  .plans-grid::-webkit-scrollbar,
+  .plans-grid-4::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Cada card vira um "slide" ──────────────────────── */
+  .plans-grid .plan-card,
+  .plans-grid-4 .plan-card {
+    flex: 0 0 82%;           /* 82% da tela por vez — mostra a borda do próximo */
+    max-width: 82%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always; /* Garante que para em cada card */
+  }
+
+  /* ── Dica visual de arraste ─────────────────────────── */
+  /* Texto "Deslize →" aparece abaixo de cada grupo de planos */
+  .plans-grid::after,
+  .plans-grid-4::after {
+    content: "Deslize para ver mais →";
+    flex: 0 0 auto;            /* Evita que o pseudo-elemento quebre o layout */
+    align-self: center;
+    white-space: nowrap;
+    color: rgba(255,255,255,.35);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding-right: 1.2rem;
+  }
+
+  /* ── Indicador de paginação (bolinhas) ──────────────── */
+  /* Posiciona o aviso abaixo de cada grupo de planos      */
+  .plans-group {
+    position: relative;
+  }
+
+  /* Linha de pontos indicadores logo abaixo do carrossel */
+  .plans-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+  }
+
+  .plans-swipe-hint span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    transition: background 0.3s;
+  }
+
+  .plans-swipe-hint span.active {
+    background: var(--orange);
+    width: 18px;
+    border-radius: 4px;
+  }
+
+}
+
+/* ══════════════════════════════════════════════════════════
+   OPCIONAL — Seta de arrastar animada no primeiro acesso
+   (aparece uma vez e some depois de 2 segundos)
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 639px) {
+  .plans-group:first-of-type .plans-grid::before {
+    content: "";
+    display: none; /* Reservado para uso futuro */
+  }
+}
