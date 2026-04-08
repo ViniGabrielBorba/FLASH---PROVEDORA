@@ -571,6 +571,7 @@ updateActiveNav();
   });
 
 })();
+
 /* ══════════════════════════════════════════════════════════
    PLANOS — INDICADOR DE POSIÇÃO NO CARROSSEL MOBILE
    Cole este bloco no FINAL do seu main.js
@@ -624,4 +625,69 @@ updateActiveNav();
     });
   });
 
+})();
+
+/* ══════════════════════════════════════════════════════════
+   EXTRAS DO UPGRADE VISUAL — cole no FINAL do seu main.js
+   Inclui: botão voltar ao topo, fallback de fotos
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Botão "Voltar ao topo" ────────────────────────────── */
+(function () {
+  "use strict";
+
+  /* Cria o botão automaticamente */
+  const btn = document.createElement("button");
+  btn.className = "back-to-top";
+  btn.setAttribute("aria-label", "Voltar ao topo");
+  btn.setAttribute("type", "button");
+  btn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+      fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>`;
+  document.body.appendChild(btn);
+
+  /* Mostra o botão após rolar 400px */
+  const toggle = () => btn.classList.toggle("visible", window.scrollY > 400);
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
+
+  /* Clique: rola suavemente ao topo */
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+})();
+
+/* ── Fallback visual para fotos da seção Quem Somos ────── */
+/* Se a foto ainda não foi adicionada, mostra um placeholder bonito */
+(function () {
+  "use strict";
+
+  const labels = {
+    "sobre-1.jpg": { icon: "👥", text: "Adicione aqui\na foto da equipe FLASH" },
+    "sobre-2.jpg": { icon: "🔧", text: "Adicione aqui\na foto da infraestrutura" },
+    "sobre-3.jpg": { icon: "💬", text: "Adicione aqui\na foto do atendimento" },
+    "sobre-4.jpg": { icon: "🛠️", text: "Adicione aqui\na foto dos técnicos em campo" },
+  };
+
+  document.querySelectorAll(".about-photo-card img").forEach((img) => {
+    const filename = img.src.split("/").pop();
+    const info = labels[filename];
+    if (!info) return;
+
+    img.addEventListener("error", () => {
+      const card = img.closest(".about-photo-card");
+      if (!card) return;
+      img.style.display = "none";
+
+      const ph = document.createElement("div");
+      ph.className = "about-photo-placeholder";
+      ph.innerHTML = `
+        <span class="about-photo-placeholder-icon" aria-hidden="true">${info.icon}</span>
+        <span class="about-photo-placeholder-text">${info.text.replace("\n", "<br/>")}</span>`;
+      card.insertBefore(ph, card.querySelector(".about-photo-label"));
+    });
+  });
 })();

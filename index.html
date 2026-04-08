@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR" class="no-js">
   <head>
     <meta charset="UTF-8" />
@@ -15,15 +15,15 @@
     <meta property="og:url"         content="https://flashinternet.com.br/" />
     <meta property="og:title"       content="FLASH - Internet Fibra | Rio Tinto - PB" />
     <meta property="og:description" content="Planos de internet a partir de R$ 59,90 com chip 5G incluso em planos selecionados. Instalação rápida e suporte local." />
-    <meta property="og:image"       content="assets/banner-hero.jpg" />
+    <meta property="og:image"       content="https://flashinternet.com.br/banner/public.avif" />
     <meta property="og:locale"      content="pt_BR" />
     <meta property="og:site_name"   content="FLASH Internet" />
 
     <!-- Twitter Card -->
-    <meta property="twitter:card"        content="summary_large_image" />
-    <meta property="twitter:title"       content="FLASH - Internet Fibra | Rio Tinto - PB" />
-    <meta property="twitter:description" content="Planos de internet a partir de R$ 59,90 com chip 5G incluso. Instalação rápida e suporte local." />
-    <meta property="twitter:image"       content="assets/banner-hero.jpg" />
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="FLASH - Internet Fibra | Rio Tinto - PB" />
+    <meta name="twitter:description" content="Planos de internet a partir de R$ 59,90 com chip 5G incluso. Instalação rápida e suporte local." />
+    <meta name="twitter:image"       content="https://flashinternet.com.br/banner/public.avif" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -36,7 +36,7 @@
           "name": "FLASH Provedora de Internet",
           "url": "https://flashinternet.com.br/",
           "telephone": "+55-83-3142-0950",
-          "image": "https://flashinternet.com.br/assets/banner-hero.jpg",
+          "image": "https://flashinternet.com.br/banner/public.avif",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "R. da Mangueira - Centro",
@@ -63,7 +63,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- Preload hero image -->
-    <link rel="preload" as="image" href="assets/banner-hero.jpg" />
+    <link rel="preload" as="image" href="banner/criativo-659f4455027eeMTAvMDEvMjAyNCAyMmgyOA==.jpg" />
 
     <link rel="stylesheet" href="styles.css" />
 
@@ -77,7 +77,7 @@
     <header class="site-header" id="topo" role="banner">
       <div class="container header-inner">
         <a class="logo" href="#home" aria-label="FLASH Internet — Ir para o início">
-          <img src="assets/logo.png" alt="Logo da FLASH" width="60" height="60" />
+          <img src="logo/logoflashblank.png" alt="Logo da FLASH" width="60" height="60" />
         </a>
         <nav class="nav" id="menu-principal" aria-label="Menu principal">
           <a href="#home"        class="nav-link">Home</a>
@@ -85,6 +85,8 @@
           <a href="#cobertura"   class="nav-link">Cobertura</a>
           <a href="#app"         class="nav-link">App</a>
           <a href="#faq"         class="nav-link">Dúvidas</a>
+          <a href="#lgpd"        class="nav-link">LGPD</a>
+          <a href="#sobre"       class="nav-link">Quem somos</a>
           <a href="#contato"     class="nav-link">Contato</a>
         </nav>
         <a class="btn btn-primary btn-header btn-glow" href="#planos">Assinar agora</a>
@@ -177,89 +179,84 @@
       </div>
     </div>
   </div>
-</section>
+  <!-- CARROSSEL (logo abaixo do slogan) -->
+  <div class="hero-banner-wrap" data-animate>
+    <div class="container">
+      <div
+        class="hero-carousel"
+        role="region"
+        aria-label="Carrossel de banners FLASH"
+        aria-roledescription="carrossel"
+      >
+        <div class="carousel-track" id="carousel-track" aria-live="off">
 
-        <!-- CARROSSEL -->
-        <div class="hero-banner-wrap" data-animate>
-          <div class="container">
-            <div
-              class="hero-carousel"
-              role="region"
-              aria-label="Carrossel de banners FLASH"
-              aria-roledescription="carrossel"
-            >
-              <div class="carousel-track" id="carousel-track" aria-live="off">
-
-                <!-- SLIDE 1 -->
-                <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 de 3">
-                  <img
-                    src="banner/criativo-659f4455027eeMTAvMDEvMjAyNCAyMmgyOA==.jpg"
-                    alt="Família conectada com internet FLASH em Rio Tinto - PB"
-                    fetchpriority="high"
-                    decoding="async"
-                    width="1140"
-                    height="560"
-                  />
-                  
-                </div>
-
-                <!-- SLIDE 2 -->
-                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 de 3" aria-hidden="true">
-                  <img
-                    src="banner/images (1).jpg"
-                    alt="Chip Flash Móvel 5G — conecte-se em qualquer lugar"
-                    loading="lazy"
-                    decoding="async"
-                    width="1140"
-                    height="560"
-                  />
-                 
-                </div>
-
-                <!-- SLIDE 3 -->
-                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 de 3" aria-hidden="true">
-                  <img
-                    src="banner/Chega de internet lenta, planos a partir de R$59,90mês..png"
-                    alt="Planos FLASH a partir de R$ 59,90 por mês"
-                    loading="lazy"
-                    decoding="async"
-                    width="1140"
-                    height="560"
-                  />
-                 
-                </div>
-
-              </div>
-
-              <!-- Contador (novidade) -->
-              <div class="carousel-counter" aria-hidden="true">
-                <span class="current">1</span> / 3
-              </div>
-
-              <button class="carousel-btn carousel-btn--prev" aria-label="Slide anterior" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-              </button>
-
-              <button class="carousel-btn carousel-btn--next" aria-label="Próximo slide" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-              </button>
-
-              <!-- Pontos — centralizados embaixo -->
-              <div class="carousel-dots" role="tablist" aria-label="Selecionar slide">
-                <button class="carousel-dot active" role="tab" aria-selected="true"  aria-label="Slide 1" data-index="0" type="button"></button>
-                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 2" data-index="1" type="button"></button>
-                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 3" data-index="2" type="button"></button>
-              </div>
-
-              <!-- Barra de progresso -->
-              <div class="carousel-progress" aria-hidden="true">
-                <div class="carousel-progress-bar" id="carousel-progress-bar"></div>
-              </div>
-
-            </div>
+          <!-- SLIDE 1 -->
+          <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 de 3">
+            <img
+              src="banner/criativo-659f4455027eeMTAvMDEvMjAyNCAyMmgyOA==.jpg"
+              alt="Família conectada com internet FLASH em Rio Tinto - PB"
+              fetchpriority="high"
+              decoding="async"
+              width="1140"
+              height="560"
+            />
           </div>
+
+          <!-- SLIDE 2 -->
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 de 3" aria-hidden="true">
+            <img
+              src="banner/images (1).jpg"
+              alt="Chip Flash Móvel 5G — conecte-se em qualquer lugar"
+              loading="lazy"
+              decoding="async"
+              width="1140"
+              height="560"
+            />
+          </div>
+
+          <!-- SLIDE 3 -->
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 de 3" aria-hidden="true">
+            <img
+              src="banner/Chega de internet lenta, planos a partir de R$59,90mês..png"
+              alt="Planos FLASH a partir de R$ 59,90 por mês"
+              loading="lazy"
+              decoding="async"
+              width="1140"
+              height="560"
+            />
+          </div>
+
         </div>
-      </section>
+
+        <!-- Contador -->
+        <div class="carousel-counter" aria-hidden="true">
+          <span class="current">1</span> / 3
+        </div>
+
+        <button class="carousel-btn carousel-btn--prev" aria-label="Slide anterior" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <button class="carousel-btn carousel-btn--next" aria-label="Próximo slide" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Pontos -->
+        <div class="carousel-dots" role="tablist" aria-label="Selecionar slide">
+          <button class="carousel-dot active" role="tab" aria-selected="true"  aria-label="Slide 1" data-index="0" type="button"></button>
+          <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 2" data-index="1" type="button"></button>
+          <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 3" data-index="2" type="button"></button>
+        </div>
+
+        <!-- Barra de progresso -->
+        <div class="carousel-progress" aria-hidden="true">
+          <div class="carousel-progress-bar" id="carousel-progress-bar"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- STATS -->
       <section class="section stats" aria-label="Números da FLASH">
@@ -304,97 +301,6 @@
           </div>
         </div>
       </section>
-
-      <!--
-  ══════════════════════════════════════════════════════════
-  SEÇÃO QUEM SOMOS — Cole este bloco no seu index.html
-  ONDE COLOCAR: logo após a seção de STATS (os 4 números)
-  e antes da seção de PLANOS.
-
-  FOTOS: Coloque suas fotos reais na pasta "assets/" com
-  os nomes: sobre-1.jpg, sobre-2.jpg, sobre-3.jpg, sobre-4.jpg
-  ══════════════════════════════════════════════════════════
--->
-
-<!-- QUEM SOMOS -->
-<section class="section about" id="sobre" aria-labelledby="about-heading">
-  <div class="container">
-
-    <div class="section-header" data-animate>
-      <span class="section-kicker">Quem Somos</span>
-      <h2 id="about-heading">A empresa por trás da <span class="gradient-text">melhor conexão</span></h2>
-      <p class="about-intro-text">
-        Somos uma empresa <strong>100% local</strong>, nascida em Rio Tinto - PB, com o compromisso
-        de conectar famílias e negócios com qualidade, honestidade e um atendimento
-        que só quem é daqui consegue oferecer.
-      </p>
-    </div>
-
-    <!-- ════ GRADE DE FOTOS ════ -->
-    <!-- Substitua src="assets/sobre-X.jpg" pelas suas fotos reais -->
-    <div class="about-photos" data-animate>
-
-      <!-- FOTO GRANDE (banner principal) -->
-      <div class="about-photo-card" data-animate data-animate-delay="0">
-        <img src="assets/sobre-1.jpg" alt="Equipe FLASH Provedora de Internet em Rio Tinto - PB" loading="lazy" />
-        <div class="about-photo-label">Nossa Equipe</div>
-      </div>
-
-      <!-- FOTO 2 -->
-      <div class="about-photo-card" data-animate data-animate-delay="100">
-        <img src="assets/sobre-2.jpg" alt="Infraestrutura de fibra óptica da FLASH" loading="lazy" />
-        <div class="about-photo-label">Nossa Infraestrutura</div>
-      </div>
-
-      <!-- FOTO 3 -->
-      <div class="about-photo-card" data-animate data-animate-delay="200">
-        <img src="assets/sobre-3.jpg" alt="Atendimento ao cliente FLASH" loading="lazy" />
-        <div class="about-photo-label">Nosso Atendimento</div>
-      </div>
-
-      <!-- FOTO 4 -->
-      <div class="about-photo-card" data-animate data-animate-delay="300">
-        <img src="assets/sobre-4.jpg" alt="Técnicos FLASH em campo realizando instalação" loading="lazy" />
-        <div class="about-photo-label">Em Campo</div>
-      </div>
-
-    </div>
-
-    <!-- ════ MISSÃO / VISÃO / VALORES ════ -->
-    <div class="about-values" data-animate>
-
-      <div class="about-value-card glass" data-animate data-animate-delay="0">
-        <span class="about-value-icon" aria-hidden="true">🎯</span>
-        <h3>Nossa Missão</h3>
-        <p>
-          Conectar Rio Tinto e região com internet de qualidade, acessível e com
-          suporte humano de verdade — sem burocracia.
-        </p>
-      </div>
-
-      <div class="about-value-card glass" data-animate data-animate-delay="150">
-        <span class="about-value-icon" aria-hidden="true">💎</span>
-        <h3>Nossos Valores</h3>
-        <p>
-          Atendimento próximo, honestidade, velocidade real e total
-          comprometimento com a satisfação de cada cliente.
-        </p>
-      </div>
-
-      <div class="about-value-card glass" data-animate data-animate-delay="300">
-        <span class="about-value-icon" aria-hidden="true">🌍</span>
-        <h3>Nossa Visão</h3>
-        <p>
-          Ser a provedora de referência do Litoral Norte da Paraíba, levando
-          conectividade com excelência e inovação.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- FIM QUEM SOMOS -->
 
       <!-- PLANOS -->
       <section class="section plans" id="planos" aria-labelledby="plans-heading">
@@ -827,10 +733,12 @@
             </ul>
             <div class="app-buttons">
               <a class="store-badge" href="https://play.google.com/store/apps/details?id=SEU_APP" target="_blank" rel="noopener noreferrer" aria-label="Baixar na Google Play">
-                <img src="assets/google-play.png" alt="Disponível no Google Play" loading="lazy" width="160" height="50" />
+                <span class="store-badge-title">Google Play</span>
+                <span class="store-badge-subtitle">Baixar o app</span>
               </a>
               <a class="store-badge" href="https://apps.apple.com/app/idSEU_APP" target="_blank" rel="noopener noreferrer" aria-label="Baixar na App Store">
-                <img src="assets/apple-store.png" alt="Disponível na App Store" loading="lazy" width="160" height="50" />
+                <span class="store-badge-title">App Store</span>
+                <span class="store-badge-subtitle">Baixar o app</span>
               </a>
             </div>
           </div>
@@ -890,6 +798,95 @@
               <div class="faq-body"><p>Você pode falar conosco via WhatsApp, pelo app FLASH, ou comparecer pessoalmente em nossa loja no centro de Rio Tinto - PB.</p></div>
             </details>
           </div>
+        </div>
+      </section>
+
+      <!-- LGPD -->
+      <section class="section lgpd" id="lgpd" aria-labelledby="lgpd-heading">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-kicker">LGPD</span>
+            <h2 id="lgpd-heading">Proteção de <span class="gradient-text">dados</span></h2>
+            <p>Transparência e segurança no tratamento de informações, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+          </div>
+
+          <div class="lgpd-card glass" data-animate>
+            <h3>Como usamos seus dados</h3>
+            <ul class="lgpd-list">
+              <li><strong>Finalidade</strong>: atender solicitações, verificar cobertura, enviar informações sobre planos e suporte.</li>
+              <li><strong>Dados coletados</strong>: nome, telefone e mensagem (quando você entra em contato).</li>
+              <li><strong>Seus direitos</strong>: confirmação de tratamento, acesso, correção, eliminação e revogação de consentimento (quando aplicável).</li>
+            </ul>
+            <p class="lgpd-note">Para exercer seus direitos, fale conosco pelo WhatsApp ou pelos canais informados na seção de contato.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUEM SOMOS (penúltima seção) -->
+      <section class="section about" id="sobre" aria-labelledby="about-heading">
+        <div class="container">
+
+          <div class="section-header" data-animate>
+            <span class="section-kicker">Quem Somos</span>
+            <h2 id="about-heading">A empresa por trás da <span class="gradient-text">melhor conexão</span></h2>
+            <p class="about-intro-text">
+              Somos uma empresa <strong>100% local</strong>, nascida em Rio Tinto - PB, com o compromisso
+              de conectar famílias e negócios com qualidade, honestidade e um atendimento
+              que só quem é daqui consegue oferecer.
+            </p>
+          </div>
+
+          <div class="about-photos" data-animate>
+            <div class="about-photo-card" data-animate data-animate-delay="0">
+              <img src="banner/retrato-de-pessoa-que-promove-uma-campanha-de-marketing_23-2151914236.avif" alt="Equipe e atendimento da FLASH Provedora de Internet" loading="lazy" />
+              <div class="about-photo-label">Nossa Equipe</div>
+            </div>
+
+            <div class="about-photo-card" data-animate data-animate-delay="100">
+              <img src="banner/public.avif" alt="Infraestrutura e qualidade de conexão da FLASH" loading="lazy" />
+              <div class="about-photo-label">Nossa Infraestrutura</div>
+            </div>
+
+            <div class="about-photo-card" data-animate data-animate-delay="200">
+              <img src="banner/public.avif" alt="Chip Flash Móvel e conectividade" loading="lazy" />
+              <div class="about-photo-label">Conectividade</div>
+            </div>
+
+            <div class="about-photo-card" data-animate data-animate-delay="300">
+              <img src="banner/images (2).jpg" alt="Planos e benefícios da FLASH" loading="lazy" />
+              <div class="about-photo-label">Planos e Benefícios</div>
+            </div>
+          </div>
+
+          <div class="about-values" data-animate>
+            <div class="about-value-card glass" data-animate data-animate-delay="0">
+              <span class="about-value-icon" aria-hidden="true">🎯</span>
+              <h3>Nossa Missão</h3>
+              <p>
+                Conectar Rio Tinto e região com internet de qualidade, acessível e com
+                suporte humano de verdade — sem burocracia.
+              </p>
+            </div>
+
+            <div class="about-value-card glass" data-animate data-animate-delay="150">
+              <span class="about-value-icon" aria-hidden="true">💎</span>
+              <h3>Nossos Valores</h3>
+              <p>
+                Atendimento próximo, honestidade, velocidade real e total
+                comprometimento com a satisfação de cada cliente.
+              </p>
+            </div>
+
+            <div class="about-value-card glass" data-animate data-animate-delay="300">
+              <span class="about-value-icon" aria-hidden="true">🌍</span>
+              <h3>Nossa Visão</h3>
+              <p>
+                Ser a provedora de referência do Litoral Norte da Paraíba, levando
+                conectividade com excelência e inovação.
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -956,7 +953,7 @@
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <a class="logo" href="#home" aria-label="FLASH Internet — Início"><img src="assets/logo.png" alt="Logo FLASH" loading="lazy" /></a>
+            <a class="logo" href="#home" aria-label="FLASH Internet — Início"><img src="logo/logoflashblank.png" alt="Logo FLASH" loading="lazy" /></a>
             <p>Internet rápida, estável e com chip móvel.<br/>Conectando Rio Tinto e região.</p>
           </div>
           <nav class="footer-links-col" aria-label="Links de navegação">
@@ -966,6 +963,8 @@
             <a href="#cobertura">Cobertura</a>
             <a href="#app">App</a>
             <a href="#faq">Dúvidas</a>
+            <a href="#lgpd">LGPD</a>
+            <a href="#sobre">Quem somos</a>
             <a href="#contato">Contato</a>
           </nav>
           <div class="footer-links-col">
@@ -998,6 +997,7 @@
           <div class="footer-bottom-links">
             <a href="#planos">Planos</a>
             <a href="#app">App</a>
+            <a href="#lgpd">LGPD</a>
             <a href="#contato">Contato</a>
           </div>
         </div>
