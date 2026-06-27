@@ -19,8 +19,42 @@ const PLAN_MESSAGES = {
   "149,90": "Olá! Quero assinar o plano FLASH de R$ 149,90 (800 Mega + 3 Chips Flash Móvel com 50GB cada). Pode me passar mais detalhes?",
 };
 
-/* CEPs com cobertura — 5 primeiros dígitos */
-const COVERED_PREFIXES = new Set(["58297", "58296", "58295", "58298"]);
+/* Área de cobertura — interior da Paraíba (5 primeiros dígitos do CEP) */
+const COVERED_PREFIXES = new Set([
+  "58297", "58296", "58295", "58298", // Rio Tinto
+  "58278", "58279",                   // Jacaraú
+  "58273", "58274",                   // Pedro Régis
+]);
+
+/* Códigos IBGE das cidades atendidas (ViaCEP retorna no campo ibge) */
+const COVERED_IBGE = new Set([
+  "2512903", // Rio Tinto
+  "2507309", // Jacaraú
+  "2512721", // Pedro Régis
+]);
+
+const COVERED_CITIES_PB = new Set([
+  "rio tinto",
+  "jacarau",
+  "pedro regis",
+]);
+
+const normalizeText = (str) =>
+  String(str ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
+const isCoveredArea = (cep, city, state, ibge) => {
+  if (state && state.toUpperCase() !== "PB") return false;
+
+  if (COVERED_PREFIXES.has(cep.slice(0, 5))) return true;
+  if (ibge && COVERED_IBGE.has(String(ibge))) return true;
+
+  const normalizedCity = normalizeText(city);
+  return COVERED_CITIES_PB.has(normalizedCity);
+};
 
 const buildWhatsAppLink = (msg) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -65,9 +99,11 @@ const nav        = document.querySelector(".nav");
 
 const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])';
 
-const closeMenu = () => {
+const closeMenu = (returnFocus = false) => {
+  const wasOpen = nav?.classList.contains("active");
   nav?.classList.remove("active");
   menuToggle?.setAttribute("aria-expanded", "false");
+  if (returnFocus && wasOpen) menuToggle?.focus();
 };
 
 const openMenu = () => {
@@ -81,11 +117,13 @@ if (menuToggle && nav) {
     nav.classList.contains("active") ? closeMenu() : openMenu();
   });
 
-  nav.querySelectorAll(".nav-link").forEach((l) => l.addEventListener("click", closeMenu));
-  document.addEventListener("click", (e) => { if (!header?.contains(e.target)) closeMenu(); });
+  nav.querySelectorAll(".nav-link").forEach((l) => l.addEventListener("click", () => closeMenu(true)));
+  document.addEventListener("click", (e) => {
+    if (!header?.contains(e.target) && nav.classList.contains("active")) closeMenu(true);
+  });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") { closeMenu(); menuToggle.focus(); return; }
+    if (e.key === "Escape" && nav.classList.contains("active")) { closeMenu(true); return; }
 
     if (e.key === "Tab" && nav.classList.contains("active") && window.innerWidth < 768) {
       const focusable = [...nav.querySelectorAll(FOCUSABLE)];
@@ -177,19 +215,18 @@ if (form && submitBtn) {
     if (!message) { setFieldError(form.mensagem, "msg-error",  "Por favor, escreva sua mensagem."); valid = false; }
     if (!valid) { form.querySelector("[aria-invalid]")?.focus(); return; }
 
+    const waUrl = buildWhatsAppLink(`Olá! Meu nome é ${name}.\nTelefone: ${phone}.\n\n${message}`);
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+
     submitBtn.setAttribute("data-loading", "true");
     const spanEl   = submitBtn.querySelector("span");
     const original = spanEl?.textContent ?? "";
     if (spanEl) spanEl.textContent = "Abrindo WhatsApp...";
 
-    setTimeout(() => {
-      window.open(
-        buildWhatsAppLink(`Olá! Meu nome é ${name}.\nTelefone: ${phone}.\n\n${message}`),
-        "_blank", "noopener,noreferrer"
-      );
+    requestAnimationFrame(() => {
       submitBtn.removeAttribute("data-loading");
       if (spanEl) spanEl.textContent = original;
-    }, 400);
+    });
   });
 }
 
@@ -213,26 +250,71 @@ if (cepInput) {
   });
 }
 
-const showCoverageResult = (type, icon, text, extra = "") => {
+const appendMessageParts = (parent, parts) => {
+  parts.forEach((part) => {
+    if (part.strong) {
+      const strong = document.createElement("strong");
+      strong.textContent = part.strong;
+      parent.appendChild(strong);
+    }
+    if (part.text) parent.appendChild(document.createTextNode(part.text));
+  });
+};
+
+const showCoverageResult = (type, icon, messageParts, action = null) => {
+  if (!coverageResult) return;
   coverageResult.className = `coverage-result ${type}`;
-  coverageResult.innerHTML = `
-    <span class="result-icon" aria-hidden="true">${icon}</span>
-    <div>
-      <span>${text}</span>
-      ${extra}
-    </div>
-  `;
+  coverageResult.replaceChildren();
+
+  const iconEl = document.createElement("span");
+  iconEl.className = "result-icon";
+  iconEl.setAttribute("aria-hidden", "true");
+  iconEl.textContent = icon;
+
+  const body = document.createElement("div");
+  const textEl = document.createElement("span");
+  appendMessageParts(textEl, messageParts);
+  body.appendChild(textEl);
+
+  if (action) {
+    const link = document.createElement("a");
+    link.className = "coverage-result-action";
+    link.href = action.href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = action.label;
+    body.appendChild(link);
+  }
+
+  coverageResult.append(iconEl, body);
   coverageResult.hidden = false;
 };
 
+const showCoverageAddress = (street, district, city, state) => {
+  if (!coverageAddress) return;
+  coverageAddress.replaceChildren();
+
+  const title = document.createElement("strong");
+  title.textContent = "📍 Endereço encontrado";
+  coverageAddress.append(title, document.createTextNode(`${street}${district}${city} - ${state}`));
+  coverageAddress.hidden = false;
+};
+
 const showCoverageLoading = () => {
+  if (!coverageResult) return;
   coverageResult.className = "coverage-result loading";
-  coverageResult.innerHTML = `
-    <div class="spinner" aria-hidden="true"></div>
-    <span>Consultando cobertura…</span>
-  `;
+  coverageResult.replaceChildren();
+
+  const spinner = document.createElement("div");
+  spinner.className = "spinner";
+  spinner.setAttribute("aria-hidden", "true");
+
+  const label = document.createElement("span");
+  label.textContent = "Consultando cobertura…";
+
+  coverageResult.append(spinner, label);
   coverageResult.hidden = false;
-  coverageAddress.hidden = true;
+  if (coverageAddress) coverageAddress.hidden = true;
 };
 
 const setCepError = (msg) => {
@@ -268,7 +350,7 @@ if (coverageForm) {
       coverageBtn.disabled = false;
 
       if (data.erro) {
-        showCoverageResult("error", "❌", "CEP não encontrado. Verifique e tente novamente.");
+        showCoverageResult("error", "❌", [{ text: "CEP não encontrado. Verifique e tente novamente." }]);
         coverageAddress.hidden = true;
         return;
       }
@@ -277,29 +359,43 @@ if (coverageForm) {
       const state    = data.uf ?? "";
       const street   = data.logradouro ? `${data.logradouro}, ` : "";
       const district = data.bairro ? `${data.bairro} — ` : "";
-      coverageAddress.innerHTML = `<strong>📍 Endereço encontrado</strong>${street}${district}${city} - ${state}`;
-      coverageAddress.hidden = false;
+      showCoverageAddress(street, district, city, state);
 
-      const prefix  = raw.slice(0, 5);
-      const covered = COVERED_PREFIXES.has(prefix) || city.toLowerCase().includes("rio tinto");
+      const covered = isCoveredArea(raw, city, state, data.ibge);
 
       if (covered) {
         showCoverageResult(
-          "success", "✅",
-          `Boa notícia! A FLASH <strong>atende sua região</strong> em ${city} - ${state}.`,
-          `<a class="coverage-result-action" href="${buildWhatsAppLink(`Olá! Verificando cobertura no CEP ${cepInput.value} em ${city} - ${state}. Quero assinar um plano!`)}" target="_blank" rel="noopener noreferrer">Assinar pelo WhatsApp →</a>`
+          "success",
+          "✅",
+          [
+            { text: "Boa notícia! A FLASH " },
+            { strong: "atende sua região" },
+            { text: ` em ${city} - ${state}.` },
+          ],
+          {
+            href: buildWhatsAppLink(`Olá! Verificando cobertura no CEP ${cepInput.value} em ${city} - ${state}. Quero assinar um plano!`),
+            label: "Assinar pelo WhatsApp →",
+          }
         );
       } else {
         showCoverageResult(
-          "error", "📡",
-          `Ainda não atendemos <strong>${city} - ${state}</strong> com esse CEP.`,
-          `<a class="coverage-result-action" href="${buildWhatsAppLink(`Olá! Moro em ${city} - ${state} (CEP: ${cepInput.value}). Vocês têm previsão de cobertura na minha área?`)}" target="_blank" rel="noopener noreferrer">Avisar quando chegar →</a>`
+          "error",
+          "📡",
+          [
+            { text: "Ainda não atendemos " },
+            { strong: `${city} - ${state}` },
+            { text: " com esse CEP." },
+          ],
+          {
+            href: buildWhatsAppLink(`Olá! Moro em ${city} - ${state} (CEP: ${cepInput.value}). Vocês têm previsão de cobertura na minha área?`),
+            label: "Avisar quando chegar →",
+          }
         );
       }
     } catch {
       if (btnSpan) btnSpan.textContent = "Verificar cobertura";
       coverageBtn.disabled = false;
-      showCoverageResult("error", "⚠️", "Erro ao consultar o CEP. Verifique sua conexão e tente novamente.");
+      showCoverageResult("error", "⚠️", [{ text: "Erro ao consultar o CEP. Verifique sua conexão e tente novamente." }]);
     }
   });
 }
@@ -666,27 +762,43 @@ updateActiveNav();
   "use strict";
 
   const labels = {
-    "sobre-1.jpg": { icon: "👥", text: "Adicione aqui\na foto da equipe FLASH" },
-    "sobre-2.jpg": { icon: "🔧", text: "Adicione aqui\na foto da infraestrutura" },
-    "sobre-3.jpg": { icon: "💬", text: "Adicione aqui\na foto do atendimento" },
-    "sobre-4.jpg": { icon: "🛠️", text: "Adicione aqui\na foto dos técnicos em campo" },
+    "retrato-de-pessoa-que-promove-uma-campanha-de-marketing_23-2151914236.avif": { icon: "👥", lines: ["Adicione aqui", "a foto da equipe FLASH"] },
+    "Linhador ajustando caixa de telecomunicações.png": { icon: "🔧", lines: ["Adicione aqui", "a foto da infraestrutura"] },
+    "Linhador ajustando caixa de telecomunicações.webp": { icon: "🔧", lines: ["Adicione aqui", "a foto da infraestrutura"] },
+    "Internet rápida e estável com chip.png": { icon: "📱", lines: ["Adicione aqui", "a foto do chip móvel"] },
+    "Internet rápida e estável com chip.webp": { icon: "📱", lines: ["Adicione aqui", "a foto do chip móvel"] },
+    "Plano de internet 300 Mbps.png": { icon: "🛠️", lines: ["Adicione aqui", "a foto dos planos"] },
+    "Plano de internet 300 Mbps.webp": { icon: "🛠️", lines: ["Adicione aqui", "a foto dos planos"] },
+    "public.avif": { icon: "🔧", lines: ["Adicione aqui", "a foto da infraestrutura"] },
+    "images (2).jpg": { icon: "🛠️", lines: ["Adicione aqui", "a foto dos planos"] },
   };
 
   document.querySelectorAll(".about-photo-card img").forEach((img) => {
-    const filename = img.src.split("/").pop();
+    const filename = decodeURIComponent(img.src.split("/").pop().split("?")[0]);
     const info = labels[filename];
     if (!info) return;
 
     img.addEventListener("error", () => {
       const card = img.closest(".about-photo-card");
-      if (!card) return;
+      if (!card || card.querySelector(".about-photo-placeholder")) return;
       img.style.display = "none";
 
       const ph = document.createElement("div");
       ph.className = "about-photo-placeholder";
-      ph.innerHTML = `
-        <span class="about-photo-placeholder-icon" aria-hidden="true">${info.icon}</span>
-        <span class="about-photo-placeholder-text">${info.text.replace("\n", "<br/>")}</span>`;
+
+      const iconEl = document.createElement("span");
+      iconEl.className = "about-photo-placeholder-icon";
+      iconEl.setAttribute("aria-hidden", "true");
+      iconEl.textContent = info.icon;
+
+      const textEl = document.createElement("span");
+      textEl.className = "about-photo-placeholder-text";
+      info.lines.forEach((line, i) => {
+        if (i > 0) textEl.appendChild(document.createElement("br"));
+        textEl.appendChild(document.createTextNode(line));
+      });
+
+      ph.append(iconEl, textEl);
       card.insertBefore(ph, card.querySelector(".about-photo-label"));
     });
   });
