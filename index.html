@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR" class="no-js">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
     <title>FLASH Provedora de Internet | Rio Tinto - PB</title>
     <meta name="description" content="FLASH — internet fibra rápida e estável com planos a partir de R$ 59,90 e chip 5G em planos selecionados. Rio Tinto - PB e região." />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#060d1f" />
+    <meta name="theme-color" content="#0E4526" />
     <link rel="canonical" href="https://flashinternet.com.br/" />
 
     <!-- Open Graph -->
@@ -34,6 +34,7 @@
           "@type": "LocalBusiness",
           "@id": "https://flashinternet.com.br/#business",
           "name": "FLASH Provedora de Internet",
+          "description": "Internet fibra rápida e estável com planos a partir de R$ 59,90 e chip 5G em planos selecionados. Rio Tinto - PB e região.",
           "url": "https://flashinternet.com.br/",
           "telephone": "+55-83-3142-0950",
           "image": "https://flashinternet.com.br/banner/public.avif",
@@ -46,12 +47,79 @@
             "addressCountry": "BR"
           },
           "priceRange": "R$ 59,90 - R$ 149,90",
+          "sameAs": [
+            "https://instagram.com/flash.paraiba",
+            "https://wa.me/558331420950"
+          ],
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Rio Tinto",
+              "containedInPlace": { "@type": "State", "name": "Paraíba" }
+            },
+            {
+              "@type": "City",
+              "name": "Jacaraú",
+              "containedInPlace": { "@type": "State", "name": "Paraíba" }
+            },
+            {
+              "@type": "City",
+              "name": "Pedro Régis",
+              "containedInPlace": { "@type": "State", "name": "Paraíba" }
+            }
+          ],
           "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
             "opens": "08:00",
             "closes": "18:00"
           }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://flashinternet.com.br/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Como funciona a instalação?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nossa equipe agenda a visita e instala tudo em poucas horas, sem complicações. O processo é rápido e nossos técnicos deixam tudo configurado e funcionando."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Há cobertura na minha região?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Atendemos Rio Tinto, Jacaraú e Pedro Régis (PB). Use o verificador de CEP no site ou fale com nosso time no WhatsApp para confirmar disponibilidade na sua rua."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "O chip 5G é incluso em todos os planos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Está incluso nos planos da categoria Internet + Chip Flash Móvel. Confira os detalhes na seção de planos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qual o prazo de fidelidade?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nossos planos não possuem fidelidade obrigatória. Você pode cancelar quando quiser, sem multas."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como entro em contato com o suporte?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Você pode falar conosco via WhatsApp, pelo app FLASH, ou comparecer pessoalmente em nossa loja no centro de Rio Tinto - PB."
+              }
+            }
+          ]
         }
       ]
     }
@@ -192,38 +260,47 @@
 
           <!-- SLIDE 1 -->
           <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 de 3">
-            <img
-               src="imagens/Plano de internet 300 Mbps.png"
-              alt="Família conectada com internet FLASH em Rio Tinto - PB"
-              fetchpriority="high"
-              decoding="async"
-              width="1140"
-              height="560"
-            />
+            <picture>
+              <source media="(max-width: 767px)" srcset="imagens/Conexão rápida com 500 MEGA (1).png" />
+              <img
+                src="banner/criativo-659f4455027eeMTAvMDEvMjAyNCAyMmgyOA==.jpg"
+                alt="Família conectada com internet FLASH em Rio Tinto - PB"
+                fetchpriority="high"
+                decoding="async"
+                width="1140"
+                height="560"
+              />
+            </picture>
           </div>
 
           <!-- SLIDE 2 -->
           <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 de 3" aria-hidden="true">
-            <img
-              src="imagens/Plano de dados 5G turbinado.png"
-              alt="Chip Flash Móvel 5G — conecte-se em qualquer lugar"
-              loading="lazy"
-              decoding="async"
-              width="1140"
-              height="560"
-            />
+            <picture>
+              <source media="(max-width: 767px)" srcset="imagens/Plano de dados 5G turbinado.png" />
+              <img
+                src="banner/images (1).jpg"
+                alt="Chip Flash Móvel 5G — conecte-se em qualquer lugar"
+                loading="lazy"
+                decoding="async"
+                width="1140"
+                height="560"
+              />
+            </picture>
           </div>
 
           <!-- SLIDE 3 -->
           <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 de 3" aria-hidden="true">
-            <img
-             src="imagens/Internet rápida e estável com chip.png"
-              alt="Planos FLASH a partir de R$ 59,90 por mês"
-              loading="lazy"
-              decoding="async"
-              width="1140"
-              height="560"
-            />
+            <picture>
+              <source media="(max-width: 767px)" srcset="imagens/Plano de internet 300 Mbps.webp" />
+              <img
+                src="banner/Chega de internet lenta, planos a partir de R$59,90mês..png"
+                alt="Planos FLASH a partir de R$ 59,90 por mês"
+                loading="lazy"
+                decoding="async"
+                width="1140"
+                height="560"
+              />
+            </picture>
           </div>
 
         </div>
@@ -445,7 +522,10 @@
           <div class="plans-group" data-animate>
             <div class="plans-group-header plans-group-header--chip">
               <div class="plans-group-chip-preview" aria-hidden="true">
-                <img src="imagens/chip.png" alt="" loading="lazy" />
+                <picture>
+                  <source srcset="imagens/chip.webp" type="image/webp" />
+                  <img src="imagens/chip.png" alt="" loading="lazy" decoding="async" width="120" height="76" />
+                </picture>
                 <span class="chip-preview-badge">5G</span>
               </div>
               <div>
@@ -467,7 +547,10 @@
                 <div class="plan-head">
                   <div class="chip-visual">
                     <div class="chip-visual-frame">
-                      <img src="imagens/chip.png" alt="Chip Flash Móvel 5G" loading="lazy" />
+                      <picture>
+                        <source srcset="imagens/chip.webp" type="image/webp" />
+                        <img src="imagens/chip.png" alt="Chip Flash Móvel 5G" loading="lazy" decoding="async" width="120" height="76" />
+                      </picture>
                       <div class="chip-visual-glow" aria-hidden="true"></div>
                     </div>
                     <span class="chip-visual-label">Chip Flash Móvel incluso</span>
@@ -503,7 +586,10 @@
                   <div class="badge">⭐ Mais escolhido</div>
                   <div class="chip-visual chip-visual--featured">
                     <div class="chip-visual-frame chip-visual-frame--orange">
-                      <img src="imagens/chip.png" alt="Chip Flash Móvel 5G 25GB" loading="lazy" />
+                      <picture>
+                        <source srcset="imagens/chip.webp" type="image/webp" />
+                        <img src="imagens/chip.png" alt="Chip Flash Móvel 5G 25GB" loading="lazy" decoding="async" width="120" height="76" />
+                      </picture>
                       <div class="chip-visual-glow chip-visual-glow--orange" aria-hidden="true"></div>
                     </div>
                     <span class="chip-visual-label chip-visual-label--orange">25GB • Chip incluso</span>
@@ -539,13 +625,22 @@
                   <div class="chip-visual chip-visual--triple">
                     <div class="chip-visual-stack" aria-hidden="true">
                       <div class="chip-visual-frame chip-visual-frame--gold chip-stack-1">
-                        <img src="imagens/chip.png" alt="" loading="lazy" />
+                        <picture>
+                          <source srcset="imagens/chip.webp" type="image/webp" />
+                          <img src="imagens/chip.png" alt="" loading="lazy" decoding="async" width="120" height="76" />
+                        </picture>
                       </div>
                       <div class="chip-visual-frame chip-visual-frame--gold chip-stack-2">
-                        <img src="imagens/chip.png" alt="" loading="lazy" />
+                        <picture>
+                          <source srcset="imagens/chip.webp" type="image/webp" />
+                          <img src="imagens/chip.png" alt="" loading="lazy" decoding="async" width="120" height="76" />
+                        </picture>
                       </div>
                       <div class="chip-visual-frame chip-visual-frame--gold chip-stack-3">
-                        <img src="imagens/chip.png" alt="3 Chips Flash Móvel 5G 50GB" loading="lazy" />
+                        <picture>
+                          <source srcset="imagens/chip.webp" type="image/webp" />
+                          <img src="imagens/chip.png" alt="3 Chips Flash Móvel 5G 50GB" loading="lazy" decoding="async" width="120" height="76" />
+                        </picture>
                         <div class="chip-visual-glow chip-visual-glow--gold" aria-hidden="true"></div>
                       </div>
                     </div>
@@ -591,7 +686,7 @@
           <div class="section-header" data-animate>
             <span class="section-kicker">Cobertura</span>
             <h2 id="coverage-heading">Tem FLASH na <span class="gradient-text">sua rua?</span></h2>
-            <p>Digite seu CEP e descubra se atendemos sua região agora mesmo.</p>
+            <p>Digite seu CEP e descubra se atendemos sua região. Cobertura em <strong>Rio Tinto</strong>, <strong>Jacaraú</strong> e <strong>Pedro Régis</strong> — interior da Paraíba.</p>
           </div>
           <div class="coverage-card glass" data-animate>
             <form class="coverage-form" id="coverage-form" novalidate aria-label="Verificador de cobertura por CEP">
@@ -743,7 +838,10 @@
             </div>
           </div>
           <div class="app-media" data-animate>
-            <img src="imagens/app.png" alt="Tela do aplicativo FLASH mostrando painel de controle da internet" loading="lazy" />
+            <picture>
+              <source srcset="imagens/app.webp" type="image/webp" />
+              <img src="imagens/app.png" alt="Tela do aplicativo FLASH mostrando painel de controle da internet" loading="lazy" decoding="async" width="320" height="640" />
+            </picture>
           </div>
         </div>
       </section>
@@ -783,7 +881,7 @@
             </details>
             <details class="faq-item glass">
               <summary><span class="faq-num" aria-hidden="true">02</span><span class="faq-summary-text">Há cobertura na minha região?</span></summary>
-              <div class="faq-body"><p>Use o verificador de CEP acima ou fale com nosso time no WhatsApp para confirmar cobertura e disponibilidade.</p></div>
+              <div class="faq-body"><p>Atendemos Rio Tinto, Jacaraú e Pedro Régis (PB). Use o verificador de CEP acima ou fale com nosso time no WhatsApp para confirmar disponibilidade na sua rua.</p></div>
             </details>
             <details class="faq-item glass">
               <summary><span class="faq-num" aria-hidden="true">03</span><span class="faq-summary-text">O chip 5G é incluso em todos os planos?</span></summary>
@@ -838,22 +936,31 @@
 
           <div class="about-photos" data-animate>
             <div class="about-photo-card" data-animate data-animate-delay="0">
-              <img src="banner/retrato-de-pessoa-que-promove-uma-campanha-de-marketing_23-2151914236.avif" alt="Equipe e atendimento da FLASH Provedora de Internet" loading="lazy" />
+              <img src="imagens/retrato-de-pessoa-que-promove-uma-campanha-de-marketing_23-2151914236.avif" alt="Equipe e atendimento da FLASH Provedora de Internet" loading="lazy" decoding="async" width="400" height="300" />
               <div class="about-photo-label">Nossa Equipe</div>
             </div>
 
             <div class="about-photo-card" data-animate data-animate-delay="100">
-              <img src="banner/public.avif" alt="Infraestrutura e qualidade de conexão da FLASH" loading="lazy" />
+              <picture>
+                <source srcset="imagens/Linhador ajustando caixa de telecomunicações.webp" type="image/webp" />
+                <img src="imagens/Linhador ajustando caixa de telecomunicações.png" alt="Técnico da FLASH instalando infraestrutura de fibra óptica" loading="lazy" decoding="async" width="400" height="300" />
+              </picture>
               <div class="about-photo-label">Nossa Infraestrutura</div>
             </div>
 
             <div class="about-photo-card" data-animate data-animate-delay="200">
-              <img src="banner/public.avif" alt="Chip Flash Móvel e conectividade" loading="lazy" />
+              <picture>
+                <source srcset="imagens/Internet rápida e estável com chip.webp" type="image/webp" />
+                <img src="imagens/Internet rápida e estável com chip.png" alt="Chip Flash Móvel 5G e conectividade em qualquer lugar" loading="lazy" decoding="async" width="400" height="300" />
+              </picture>
               <div class="about-photo-label">Conectividade</div>
             </div>
 
             <div class="about-photo-card" data-animate data-animate-delay="300">
-              <img src="banner/images (2).jpg" alt="Planos e benefícios da FLASH" loading="lazy" />
+              <picture>
+                <source srcset="imagens/Plano de internet 300 Mbps.webp" type="image/webp" />
+                <img src="imagens/Plano de internet 300 Mbps.png" alt="Planos de internet FLASH a partir de 300 Mbps" loading="lazy" decoding="async" width="400" height="300" />
+              </picture>
               <div class="about-photo-label">Planos e Benefícios</div>
             </div>
           </div>
