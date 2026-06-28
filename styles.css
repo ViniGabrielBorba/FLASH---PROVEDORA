@@ -2649,4 +2649,21 @@
   }
 }
 
-
+/* Solução rápida - remover espaços laterais do carrossel em mobile */
+@media (max-width: 768px) {
+  .hero-banner-wrap .container {
+    padding: 0 !important;
+  }
+  
+  .hero-banner-wrap {
+    padding: 0 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+  
+  .hero-carousel {
+    border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+}
