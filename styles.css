@@ -2648,22 +2648,160 @@
     border-radius: 20px;
   }
 }
+/* ============================================================
+   CORREÇÃO: CARROSSEL EM SMARTPHONE - REMOVER ESPAÇOS LATERAIS
+   ============================================================ */
 
-/* Solução rápida - remover espaços laterais do carrossel em mobile */
+/* Remove padding do container que envolve o carrossel em telas pequenas */
 @media (max-width: 768px) {
+  /* Remove o padding lateral do container do carrossel */
   .hero-banner-wrap .container {
-    padding: 0 !important;
-  }
-  
-  .hero-banner-wrap {
-    padding: 0 0 !important;
-    margin: 0 !important;
-    overflow: hidden !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
-  
+
+  /* Garante que o wrapper ocupe 100% */
+  .hero-banner-wrap {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* Carrossel ocupa toda a largura */
   .hero-carousel {
+    width: 100% !important;
+    max-width: 100% !important;
     border-radius: 0 !important;
     overflow: hidden !important;
+  }
+
+  /* Track ocupa 100% */
+  .carousel-track {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 180px !important;
+    aspect-ratio: unset !important;
+  }
+
+  /* Slides ocupam 100% */
+  .carousel-slide {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+  }
+
+  .carousel-slide.active {
+    position: relative !important;
+  }
+
+  /* Imagens ocupam toda a largura */
+  .carousel-slide picture {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .carousel-slide img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 180px !important;
+    max-height: min(55vh, 400px) !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  /* Remove overlay que pode causar problemas */
+  .carousel-slide-overlay {
+    padding: 1rem !important;
+  }
+
+  /* Mantém os botões de navegação visíveis e ajustados */
+  .carousel-btn {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+
+  .carousel-btn--prev {
+    left: 0.6rem !important;
+  }
+
+  .carousel-btn--next {
+    right: 0.6rem !important;
+  }
+
+  /* Dots mais compactos */
+  .carousel-dots {
+    bottom: 0.6rem !important;
+    padding: 0.3rem 0.6rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .carousel-dot {
+    width: 5px !important;
+    height: 5px !important;
+    min-width: 5px !important;
+  }
+
+  .carousel-dot.active {
+    width: 18px !important;
+  }
+
+  /* Contador mais discreto */
+  .carousel-counter {
+    top: 0.6rem !important;
+    right: 0.8rem !important;
+    font-size: 0.6rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+}
+
+/* Para telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+  .carousel-slide img {
+    min-height: 140px !important;
+    max-height: 45vh !important;
+  }
+
+  .carousel-track {
+    min-height: 140px !important;
+  }
+
+  /* Botões menores ainda */
+  .carousel-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+
+  .carousel-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .carousel-btn--prev {
+    left: 0.4rem !important;
+  }
+
+  .carousel-btn--next {
+    right: 0.4rem !important;
+  }
+}
+
+/* Para tablets (769px - 1024px) - mantém um pouco de padding */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-banner-wrap .container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .hero-carousel {
+    border-radius: 16px !important;
   }
 }
