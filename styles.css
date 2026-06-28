@@ -2503,4 +2503,12 @@
       -webkit-backdrop-filter: none;
     }
   }
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
   
