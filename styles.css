@@ -2542,6 +2542,13 @@
   object-position: center;
 }
 
+.plans-group-chip-preview img,
+.chip-visual-frame img,
+.chip-visual-stack img {
+  transform: scale(1.18);
+  transform-origin: center;
+}
+
 .app-media {
   display: flex;
   justify-content: center;
@@ -2549,8 +2556,8 @@
 
 .app-media picture {
   display: block;
-  width: min(100%, 380px);
-  aspect-ratio: 9 / 16;
+  width: min(100%, 340px);
+  aspect-ratio: 1 / 2;
   overflow: hidden;
   border-radius: 28px;
   border: 1px solid var(--glass-border);
@@ -2563,8 +2570,10 @@
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: rgba(14,69,38,.35);
 }
   
+
 
