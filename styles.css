@@ -2576,4 +2576,77 @@
 }
   
 
+/* ============================================================
+   AJUSTES — Seção app com imagem e badges das lojas
+   ============================================================ */
+.app-buttons {
+  align-items: center;
+}
+
+.store-badge {
+  width: 180px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.store-badge:hover {
+  border-color: transparent;
+  box-shadow: none;
+  transform: translateY(-3px);
+}
+
+.store-badge img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.app-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-media picture {
+  display: block;
+  width: min(100%, 460px);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid var(--glass-border);
+  background: #fff;
+  box-shadow: 0 30px 60px rgba(0,0,0,.4);
+}
+
+.app-media img {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+  object-position: center;
+  background: #fff;
+}
+
+@media (max-width: 599px) {
+  .app-buttons {
+    justify-content: center;
+  }
+
+  .store-badge {
+    width: 160px;
+  }
+
+  .app-media picture {
+    width: 100%;
+    border-radius: 20px;
+  }
+}
+
 
