@@ -2519,4 +2519,52 @@
     object-fit:contain;
     object-position:center;
 }
+
+/* ============================================================
+   AJUSTES — Imagens preenchendo os quadros fora do carrossel
+   ============================================================ */
+.plans-group-chip-preview picture,
+.chip-visual-frame picture,
+.chip-visual-stack picture,
+.about-photo-card picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.plans-group-chip-preview img,
+.chip-visual-frame img,
+.chip-visual-stack img,
+.about-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.app-media {
+  display: flex;
+  justify-content: center;
+}
+
+.app-media picture {
+  display: block;
+  width: min(100%, 380px);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 60px rgba(0,0,0,.4);
+}
+
+.app-media img {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+  object-position: center;
+}
   
+
