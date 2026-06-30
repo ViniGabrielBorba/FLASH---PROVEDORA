@@ -2185,8 +2185,9 @@
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
     
+    /* Mantém a logo visível - removendo o filtro que escondia */
     .site-header .logo img {
-      filter: brightness(0) invert(1);
+      filter: none !important;
     }
     
     .site-header .menu-toggle .bar {
