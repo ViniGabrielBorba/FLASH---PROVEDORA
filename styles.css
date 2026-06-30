@@ -2166,3 +2166,50 @@
       border-radius: 4px;
     }
   }
+
+  /* ══════════════════════════════════════════════════════════
+     HEADER BRANCO EM DISPOSITIVOS MÓVEIS (SMARTPHONES E TABLETS)
+     ══════════════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .site-header {
+      background: #ffffff !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    
+    .site-header.scrolled {
+      background: #ffffff !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    
+    .site-header .logo img {
+      filter: brightness(0) invert(1);
+    }
+    
+    .site-header .menu-toggle .bar {
+      background: #000000;
+    }
+    
+    .site-header .nav-link {
+      color: #000000;
+    }
+    
+    .site-header .nav-link:hover {
+      background: rgba(0,0,0,0.05);
+      color: #000000;
+    }
+    
+    .site-header .nav-link.active {
+      background: rgba(212,160,23,0.12);
+      color: var(--orange);
+    }
+    
+    .site-header .nav {
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+  }
